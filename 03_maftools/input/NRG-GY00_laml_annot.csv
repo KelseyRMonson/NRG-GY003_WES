@@ -1,0 +1,173 @@
+Tumor_Sample_Barcode,ID,Tissue,celltype,pfstime,Survtime,pfstat,Survstat,tx,race,age,bmi,response,response2,responseCB,Primary_Met,Signature,Site_detail,Site
+GABJHS-N-0C9S7D,GABJHS,N,Serous_Adenocarcinoma,2.07,58.68,1,1,Combo,W,47,34.73876345,PD,PD,NCB,NA,NA,NA,NA
+GABJHS-Tu-0CDQO6,GABJHS,Tu,Serous_Adenocarcinoma,2.07,58.68,1,1,Combo,W,47,34.73876345,PD,PD,NCB,P,Sig1,Ovary-left,Adnexa
+GADBKF-N-0C9S8O,GADBKF,N,Serous_Adenocarcinoma,2,44.94,1,1,Nivo,W,79,23.60414489,PD,PD,NCB,NA,NA,NA,NA
+GADBKF-Tu-0BZK5O,GADBKF,Tu,Serous_Adenocarcinoma,2,44.94,1,1,Nivo,W,79,23.60414489,PD,PD,NCB,M,Sig1,"Colon, sigmoid",Bowel
+GADCFX-N-0C9S52,GADCFX,N,Serous_Adenocarcinoma,7.66,68.53,1,1,Combo,W,66,23.84309533,PR,PR,CB,NA,NA,NA,NA
+GADCFX-Tu-0BE3DG,GADCFX,Tu,Serous_Adenocarcinoma,7.66,68.53,1,1,Combo,W,66,23.84309533,PR,PR,CB,P,Sig2,"Soft tissue, pelvis","Soft tissue, pelvis"
+GADCGA-0C9S9L,GADCGA,N,Serous_Adenocarcinoma,3.88,53.22,1,1,Combo,W,52,27.35884546,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADCGA-Tu-0CDQPE,GADCGA,Tu,Serous_Adenocarcinoma,3.88,53.22,1,1,Combo,W,52,27.35884546,SD,SD_NCB,NCB,M,Sig1,Vagina,Vagina
+GADCGH-N-0C9S8V,GADCGH,N,Serous_Adenocarcinoma,3.65,54.21,1,1,Nivo,W,37,42.48853909,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADCGH-Tu-0CDQQ0,GADCGH,Tu,Serous_Adenocarcinoma,3.65,54.21,1,1,Nivo,W,37,42.48853909,SD,SD_NCB,NCB,P,Sig1,Ovary-left,Adnexa
+GADCGP-N-0C9S6Y,GADCGP,N,Serous_Adenocarcinoma,10.25,75.6,1,0,Combo,W,66,34.3532048,PR,PR,CB,NA,NA,NA,NA
+GADCGP-Tu-0CDQR8,GADCGP,Tu,Serous_Adenocarcinoma,10.25,75.6,1,0,Combo,W,66,34.3532048,PR,PR,CB,P,Sig1,Fallopian tube and ovary,Adnexa
+GADCGU-N-0C9S92,GADCGU,N,Serous_Adenocarcinoma,1.35,2.73,1,1,Nivo,W,87,24.95621302,PD,PD,NCB,NA,NA,NA,NA
+GADCGU-Tu-0BEDX9,GADCGU,Tu,Serous_Adenocarcinoma,1.35,2.73,1,1,Nivo,W,87,24.95621302,PD,PD,NCB,P,Sig2,Ovary-right,Adnexa
+GADCHA-N-0C9S6U,GADCHA,N,Serous_Adenocarcinoma,25.33,66.1,1,1,Nivo,W,60,23.63403301,CR,CR,CB,NA,NA,NA,NA
+GADCHA-Tu-0CDQSG,GADCHA,Tu,Serous_Adenocarcinoma,25.33,66.1,1,1,Nivo,W,60,23.63403301,CR,CR,CB,P,Sig1,Ovary-right,Adnexa
+GADCHV-N-0C9S9S,GADCHV,N,Serous_Adenocarcinoma,10.41,65.91,1,1,Nivo,W,84,25.3125,SD,SD_CB,CB,NA,NA,NA,NA
+GADCHV-Tu-0CDQRU,GADCHV,Tu,Serous_Adenocarcinoma,10.41,65.91,1,1,Nivo,W,84,25.3125,SD,SD_CB,CB,P,Sig2,Ovary-right,Adnexa
+GADCIB-N-0C9S8M,GADCIB,N,Serous_Adenocarcinoma,4.17,25.76,1,1,Combo,A,53,20.38561195,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADCIB-Tu-0BI56B,GADCIB,Tu,Serous_Adenocarcinoma,4.17,25.76,1,1,Combo,A,53,20.38561195,SD,SD_NCB,NCB,P,Sig1,Fallopian tube-left,Adnexa
+GADCIC-N-0C9S5V,GADCIC,N,Serous_Adenocarcinoma,1.84,13.63,1,1,Nivo,W,62,21.99280092,PD,PD,NCB,NA,NA,NA,NA
+GADCIC-Tu-0BI57L,GADCIC,Tu,Serous_Adenocarcinoma,1.84,13.63,1,1,Nivo,W,62,21.99280092,PD,PD,NCB,P,Sig2,Fallopian tube and ovary,Adnexa
+GADCIR-N-0C9S5P,GADCIR,N,Serous_Adenocarcinoma,5.45,38.47,1,1,Nivo,W,56,24.19484057,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADCIR-Tu-0BI533,GADCIR,Tu,Serous_Adenocarcinoma,5.45,38.47,1,1,Nivo,W,56,24.19484057,SD,SD_NCB,NCB,P,Sig2,Ovary-right,Adnexa
+GADCIW-N-0BEXCP,GADCIW,N,Undifferentiated_Carcinoma,5.32,48.53,1,1,Combo,W,68,31.37246947,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADCIX-N-0C9S9M,GADCIX,N,Serous_Adenocarcinoma,3.91,15.38,1,1,Nivo,W,63,24.88334223,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADCIY-N-0C9S59,GADCIY,N,Serous_Adenocarcinoma,4.14,10.51,1,1,Combo,A,70,26.33239513,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADCJB-N-0C9S8T,GADCJB,N,Serous_Adenocarcinoma,3.84,7.46,1,1,Combo,W,65,40.54627522,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADCJB-Tu-0BJSC9,GADCJB,Tu,Serous_Adenocarcinoma,3.84,7.46,1,1,Combo,W,65,40.54627522,SD,SD_NCB,NCB,P,Sig1,Omentum,Omentum
+GADCJG-N-0C9S7P,GADCJG,N,Serous_Adenocarcinoma,10.48,72.8,1,0,Nivo,B,43,39.7749695,PR,PR,CB,NA,NA,NA,NA
+GADCJG-Tu-0CDQUA,GADCJG,Tu,Serous_Adenocarcinoma,10.48,72.8,1,0,Nivo,B,43,39.7749695,PR,PR,CB,P,Sig2,Ovary-left,Adnexa
+GADCJI-N-0C9S5E,GADCJI,N,Serous_Adenocarcinoma,7.62,77.04,1,0,Nivo,W,61,26.51299949,PR,PR,CB,NA,NA,NA,NA
+GADCJI-Tu-0BI524,GADCJI,Tu,Serous_Adenocarcinoma,7.62,77.04,1,0,Nivo,W,61,26.51299949,PR,PR,CB,P,Sig1,Ovary-right,Adnexa
+GADCJR-N-0C9S5J,GADCJR,N,Serous_Adenocarcinoma,1.87,5.03,1,1,Combo,W,50,21.95324552,PD,PD,NCB,NA,NA,NA,NA
+GADCJR-Tu-0BHS1U,GADCJR,Tu,Serous_Adenocarcinoma,1.87,5.03,1,1,Combo,W,50,21.95324552,PD,PD,NCB,P,Sig2,Ovary-right,Adnexa
+GADCJW-N-0C9S95,GADCJW,N,Serous_Adenocarcinoma,1.45,2.63,1,1,Nivo,W,67,23.38860162,PD,PD,NCB,NA,NA,NA,NA
+GADCJW-Tu-0BKQO1,GADCJW,Tu,Serous_Adenocarcinoma,1.45,2.63,1,1,Nivo,W,67,23.38860162,PD,PD,NCB,P,Sig1,Ovary-right,Adnexa
+GADCJX-N-0C9S9B,GADCJX,N,Serous_Adenocarcinoma,2.04,2.66,1,1,Nivo,W,62,18.64852608,PD,PD,NCB,NA,NA,NA,NA
+GADCJX-Tu-0BFCXU,GADCJX,Tu,Serous_Adenocarcinoma,2.04,2.66,1,1,Nivo,W,62,18.64852608,PD,PD,NCB,P,Sig2,Ovary-right,Adnexa
+GADCJY-N-0C9SAK,GADCJY,N,Serous_Adenocarcinoma,1.91,41.03,1,1,Nivo,B,52,34.13210735,PD,PD,NCB,NA,NA,NA,NA
+GADCJY-Tu-0CDQUW,GADCJY,Tu,Serous_Adenocarcinoma,1.91,41.03,1,1,Nivo,B,52,34.13210735,PD,PD,NCB,M,Sig2,Ovary-left,Adnexa
+GADCKL-N-0C9S5O,GADCKL,N,Serous_Adenocarcinoma,4.4,17.28,1,1,Combo,B,62,23.99294739,PR,PR,CB,NA,NA,NA,NA
+GADCKL-Tu-0CDQVI,GADCKL,Tu,Serous_Adenocarcinoma,4.4,17.28,1,1,Combo,B,62,23.99294739,PR,PR,CB,P,Sig2,Ovary-left,Adnexa
+GADCKT-N-0C9S8F,GADCKT,N,Endometrioid_Adenocarcinoma,3.45,17.54,1,1,Combo,W,54,27.5297619,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADCKT-Tu-0CDQWQ,GADCKT,Tu,Endometrioid_Adenocarcinoma,3.45,17.54,1,1,Combo,W,54,27.5297619,SD,SD_NCB,NCB,P,Sig1,Fallopian tube and ovary-left,Adnexa
+GADCKZ-N-0C9S7E,GADCKZ,N,Serous_Adenocarcinoma,2.4,67.71,1,1,Combo,W,72,32.50700946,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADCKZ-Tu-0BFR34,GADCKZ,Tu,Serous_Adenocarcinoma,2.4,67.71,1,1,Combo,W,72,32.50700946,SD,SD_NCB,NCB,P,Sig1,NA,NA
+GADCLD-N-0C9S5M,GADCLD,N,Serous_Adenocarcinoma,26.22,31.41,1,1,Combo,W,64,27.2498024,SD,SD_CB,CB,NA,NA,NA,NA
+GADCLD-Tu-0BHRXZ,GADCLD,Tu,Serous_Adenocarcinoma,26.22,31.41,1,1,Combo,W,64,27.2498024,SD,SD_CB,CB,P,Sig2,Ovary-right,Adnexa
+GADCLG-N-0C9S4Y,GADCLG,N,Adenocarcinoma,6.34,6.34,1,1,Combo,B,62,38.49406182,PD,PD,NCB,NA,NA,NA,NA
+GADCLG-Tu-0CDQWZ,GADCLG,Tu,Adenocarcinoma,6.34,6.34,1,1,Combo,B,62,38.49406182,PD,PD,NCB,M,Sig1,Omentum,Omentum
+GADCLH-N-0C9S7U,GADCLH,N,Serous_Adenocarcinoma,3.65,4.93,1,1,Nivo,W,73,20.50460224,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADCLR-N-0C9S4U,GADCLR,N,Clear_Cell,26.64,50.96,1,1,Combo,W,58,34.09184209,CR,CR,CB,NA,NA,NA,NA
+GADCLR-Tu-0CDQXK,GADCLR,Tu,Clear_Cell,26.64,50.96,1,1,Combo,W,58,34.09184209,CR,CR,CB,P,Sig2,Ovary-right,Adnexa
+GADCLW-N-0C9S76,GADCLW,N,Serous_Adenocarcinoma,2.04,8.61,1,1,Combo,W,61,22.11043044,PD,PD,NCB,NA,NA,NA,NA
+GADCLW-Tu-0BHS7T,GADCLW,Tu,Serous_Adenocarcinoma,2.04,8.61,1,1,Combo,W,61,22.11043044,PD,PD,NCB,P,Sig1,Ovary-left,Adnexa
+GADCLZ-N-0C9S8X,GADCLZ,N,Serous_Adenocarcinoma,15.7,40.51,1,1,Nivo,W,71,24.96484375,SD,SD_CB,CB,NA,NA,NA,NA
+GADCMA-N-0C9S7T,GADCMA,N,Serous_Adenocarcinoma,1.91,28.12,1,1,Combo,A,49,20.56880661,PD,PD,NCB,NA,NA,NA,NA
+GADCMA-Tu-0BHSD2,GADCMA,Tu,Serous_Adenocarcinoma,1.91,28.12,1,1,Combo,A,49,20.56880661,PD,PD,NCB,P,Sig2,Rectum,Bowel
+GADCMD-N-0C9S5D,GADCMD,N,Serous_Adenocarcinoma,29.44,82.33,1,1,Nivo,W,57,30.63153428,CR,CR,CB,NA,NA,NA,NA
+GADCMD-Tu-0BHS8V,GADCMD,Tu,Serous_Adenocarcinoma,29.44,82.33,1,1,Nivo,W,57,30.63153428,CR,CR,CB,P,Sig2,Ovary-right,Adnexa
+GADCME-N-0C9S7K,GADCME,N,Serous_Adenocarcinoma,7.26,7.26,1,1,Nivo,W,72,29.80917611,SD,SD_CB,CB,NA,NA,NA,NA
+GADCME-Tu-0BHS5M,GADCME,Tu,Serous_Adenocarcinoma,7.26,7.26,1,1,Nivo,W,72,29.80917611,SD,SD_CB,CB,M,Sig2,Uterus,Uterus
+GADCMJ-N-0C9S98,GADCMJ,N,Serous_Adenocarcinoma,48.89,62.03,1,0,Combo,W,51,35.43912413,SD,SD_CB,CB,NA,NA,NA,NA
+GADCMR-N-0C9S9G,GADCMR,N,Serous_Adenocarcinoma,1.45,2.4,1,1,Combo,W,73,17.13937395,PD,PD,NCB,NA,NA,NA,NA
+GADCMW-N-0C9S8D,GADCMW,N,Clear_Cell,1.91,21.85,1,1,Nivo,#,50,22.47095848,PD,PD,NCB,NA,NA,NA,NA
+GADCMZ-N-0C9S7H,GADCMZ,N,Serous_Adenocarcinoma,3.71,26.48,1,1,Nivo,W,55,21.41094498,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADCMZ-Tu-0BHS3K,GADCMZ,Tu,Serous_Adenocarcinoma,3.71,26.48,1,1,Nivo,W,55,21.41094498,SD,SD_NCB,NCB,P,Sig2,Ovary-left,Adnexa
+GADCNA-N-0C9S8Y,GADCNA,N,Serous_Adenocarcinoma,2.07,26.87,1,1,Combo,W,69,24.01384083,PD,PD,NCB,NA,NA,NA,NA
+GADCNA-Tu-0BI508,GADCNA,Tu,Serous_Adenocarcinoma,2.07,26.87,1,1,Combo,W,69,24.01384083,PD,PD,NCB,P,Sig1,Ovary-left,Adnexa
+GADCNB-N-0C9S7O,GADCNB,N,Serous_Adenocarcinoma,1.87,9.53,1,1,Nivo,W,76,29.8046875,PD,PD,NCB,NA,NA,NA,NA
+GADCNB-Tu-0CDR00,GADCNB,Tu,Serous_Adenocarcinoma,1.87,9.53,1,1,Nivo,W,76,29.8046875,PD,PD,NCB,P,Sig1,Ovary-right,Adnexa
+GADCNJ-N-0C9S58,GADCNJ,N,Serous_Adenocarcinoma,3.94,11.04,1,1,Combo,B,61,26.953125,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADCNJ-Tu-0CDR1M,GADCNJ,Tu,Serous_Adenocarcinoma,3.94,11.04,1,1,Combo,B,61,26.953125,SD,SD_NCB,NCB,P,Sig1,Fallopian tube-right,Adnexa
+GADCNX-N-0C9S87,GADCNX,N,Serous_Adenocarcinoma,2.33,6.74,1,1,Nivo,W,71,41.40625,PD,PD,NCB,NA,NA,NA,NA
+GADCNX-Tu-0BHJPQ,GADCNX,Tu,Serous_Adenocarcinoma,2.33,6.74,1,1,Nivo,W,71,41.40625,PD,PD,NCB,P,Sig1,Ovary-left,Adnexa
+GADCPJ-N-0C9S6H,GADCPJ,N,Serous_Adenocarcinoma,2,26.74,1,1,Nivo,W,61,24.07105521,PD,PD,NCB,NA,NA,NA,NA
+GADCRF-N-0C9S5N,GADCRF,N,Serous_Adenocarcinoma,1.45,2.4,1,1,Combo,W,73,17.13937395,PD,PD,NCB,NA,NA,NA,NA
+GADCRF-Tu-0CDQZ6,GADCRF,Tu,Serous_Adenocarcinoma,1.45,2.4,1,1,Combo,W,73,17.13937395,PD,PD,NCB,P,Sig1,Fallopian tube and ovary-left,Adnexa
+GADCRK-N-0BHAET,GADCRK,N,Serous_Adenocarcinoma,2.2,8.48,1,1,Nivo,W,61,29.09405698,PD,PD,NCB,NA,NA,NA,NA
+GADCRK-Tu-0C0Z0A,GADCRK,Tu,Serous_Adenocarcinoma,2.2,8.48,1,1,Nivo,W,61,29.09405698,PD,PD,NCB,P,Sig1,Ovary-left,Adnexa
+GADCRT-Tu-0BGROP,GADCRT,Tu,Serous_Adenocarcinoma,1.12,2.66,1,1,Nivo,W,80,31.25,PD,PD,NCB,M,Sig2,Adnexa-left,Adnexa
+GADCRU-Tu-0BGFUT,GADCRU,Tu,Clear_Cell,1.81,4.07,1,1,Nivo,W,51,20.56880661,PD,PD,NCB,P,Sig2,Ovary-right,Adnexa
+GADCRW-Tu-0CDR28,GADCRW,Tu,Serous_Adenocarcinoma,2.5,11.27,1,1,Nivo,W,80,38.37072019,PD,PD,NCB,P,Sig1,Uterus-left posterior,Uterus
+GADFXV-Tu-0CDR2U,GADFXV,Tu,Undifferentiated_Carcinoma,1.22,1.22,1,1,Combo,W,69,22.36357132,PD,PD,NCB,P,Sig2,Adnexa-right,Adnexa
+GADFXX-N-0C9S8Q,GADFXX,N,Serous_Adenocarcinoma,2.43,7.1,1,1,Combo,W,61,28.023658,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADFXX-Tu-0C2S67,GADFXX,Tu,Serous_Adenocarcinoma,2.43,7.1,1,1,Combo,W,61,28.023658,SD,SD_NCB,NCB,P,Sig1,Ovary-left,Adnexa
+GADFYV-N-0C9S5X,GADFYV,N,Serous_Adenocarcinoma,1.91,28.32,1,1,Nivo,W,69,38.80666113,PD,PD,NCB,NA,NA,NA,NA
+GADFYV-Tu-0CDR3G,GADFYV,Tu,Serous_Adenocarcinoma,1.91,28.32,1,1,Nivo,W,69,38.80666113,PD,PD,NCB,P,Sig1,Ovary-right,Adnexa
+GADFZF-N-0C9S6R,GADFZF,N,Serous_Adenocarcinoma,5.52,35.75,1,1,Combo,W,58,29.4144465,PR,PR,CB,NA,NA,NA,NA
+GADFZF-Tu-0CDR42,GADFZF,Tu,Serous_Adenocarcinoma,5.52,35.75,1,1,Combo,W,58,29.4144465,PR,PR,CB,P,Sig1,Ovary-left,Adnexa
+GADGAB-N-0C9S77,GADGAB,N,Serous_Adenocarcinoma,2.73,17.08,1,1,Nivo,W,70,42.54125941,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADGAB-Tu-0CDR5A,GADGAB,Tu,Serous_Adenocarcinoma,2.73,17.08,1,1,Nivo,W,70,42.54125941,SD,SD_NCB,NCB,P,Sig1,Diaphragm,Diaphragm
+GADGAC-N-0C9S55,GADGAC,N,Clear_Cell,1.81,3.22,1,1,Nivo,W,68,30.8260355,PD,PD,NCB,NA,NA,NA,NA
+GADGAC-Tu-0CDR5W,GADGAC,Tu,Clear_Cell,1.81,3.22,1,1,Nivo,W,68,30.8260355,PD,PD,NCB,P,Sig1,Ovary-right,Adnexa
+GADGAD-N-0C9S5F,GADGAD,N,Serous_Adenocarcinoma,14.19,14.19,1,1,Combo,W,77,25.89483985,PR,PR,CB,NA,NA,NA,NA
+GADGAD-Tu-0CDR4O,GADGAD,Tu,Serous_Adenocarcinoma,14.19,14.19,1,1,Combo,W,77,25.89483985,PR,PR,CB,P,Sig1,Fallopian tube-right,Adnexa
+GADGAE-Tu-0BVOIK,GADGAE,Tu,Clear_Cell,0.43,0.43,1,1,Nivo,W,63,22.05208948,PD,PD,NCB,M,Sig2,Omentum,Omentum
+GADGAM-N-0C9S4W,GADGAM,N,Serous_Adenocarcinoma,4.9,30.92,1,1,Combo,W,63,27.43799164,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADGAM-Tu-0CDR6I,GADGAM,Tu,Serous_Adenocarcinoma,4.9,30.92,1,1,Combo,W,63,27.43799164,SD,SD_NCB,NCB,P,Sig1,Omentum,Omentum
+GADGAR-N-0C9S6D,GADGAR,N,Serous_Adenocarcinoma,3.68,19.78,1,1,Combo,W,70,23.42490644,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADGAR-Tu-0CDR7Q,GADGAR,Tu,Serous_Adenocarcinoma,3.68,19.78,1,1,Combo,W,70,23.42490644,SD,SD_NCB,NCB,P,Sig1,Ovary-right,Adnexa
+GADGAW-N-0C9S7S,GADGAW,N,Endometrioid_Adenocarcinoma,33.12,50.07,1,1,Combo,W,77,23.14783295,PR,PR,CB,NA,NA,NA,NA
+GADGAW-Tu-0BW60X,GADGAW,Tu,Endometrioid_Adenocarcinoma,33.12,50.07,1,1,Combo,W,77,23.14783295,PR,PR,CB,P,Sig1,Fallopian tube-right,Adnexa
+GADGBF-N-0C9S5U,GADGBF,N,Serous_Adenocarcinoma,27.93,45.7,1,1,Combo,B,67,29.37119364,PR,PR,CB,NA,NA,NA,NA
+GADGBF-Tu-0BYKMJ,GADGBF,Tu,Serous_Adenocarcinoma,27.93,45.7,1,1,Combo,B,67,29.37119364,PR,PR,CB,M,Sig2,Peritoneum,Peritoneum
+GADGBU-N-0C9S65,GADGBU,N,Serous_Adenocarcinoma,1.68,63.11,1,0,Nivo,W,59,49.93307555,PD,PD,NCB,NA,NA,NA,NA
+GADGBU-Tu-0BWR0A,GADGBU,Tu,Serous_Adenocarcinoma,1.68,63.11,1,0,Nivo,W,59,49.93307555,PD,PD,NCB,P,Sig1,Ovary-left,Adnexa
+GADGBU-Tu-0CDV91,GADGBU,Tu,Serous_Adenocarcinoma,1.68,63.11,1,0,Nivo,W,59,49.93307555,PD,PD,NCB,P,Sig2,Fallopian tube and ovary-left,Adnexa
+GADGCM-N-0C9SAL,GADGCM,N,Serous_Adenocarcinoma,3.38,3.61,1,1,Combo,W,60,20.06232275,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADGCM-Tu-0CDR8C,GADGCM,Tu,Serous_Adenocarcinoma,3.38,3.61,1,1,Combo,W,60,20.06232275,SD,SD_NCB,NCB,P,Sig2,Ovary-right,Adnexa
+GADGCX-N-0C9SAN,GADGCX,N,Clear_Cell,10.91,46.23,1,1,Nivo,A,52,21.484375,PR,PR,CB,NA,NA,NA,NA
+GADGCX-Tu-0CDRA6,GADGCX,Tu,Clear_Cell,10.91,46.23,1,1,Nivo,A,52,21.484375,PR,PR,CB,M,Sig2,Colon,Bowel
+GADGCX-Tu-0CDRAS,GADGCX,Tu,Clear_Cell,10.91,46.23,1,1,Nivo,A,52,21.484375,PR,PR,CB,P,Sig2,Ovary-left,Adnexa
+GADGDC-N-0C9S6Q,GADGDC,N,Serous_Adenocarcinoma,29.4,68.8,1,0,Combo,B,68,33.66087176,PR,PR,CB,NA,NA,NA,NA
+GADGDC-Tu-0BX2D6,GADGDC,Tu,Serous_Adenocarcinoma,29.4,68.8,1,0,Combo,B,68,33.66087176,PR,PR,CB,M,Sig2,Rectouterine pouch (cul de sac),Peritoneum
+GADGDE-Tu-0CDR9K,GADGDE,Tu,Serous_Adenocarcinoma,5.75,31.54,1,1,Combo,W,92,18.86621315,SD,SD_NCB,NCB,M,Sig2,Rectouterine pouch (cul de sac),Peritoneum
+GADGDF-N-0C9S62,GADGDF,N,Serous_Adenocarcinoma,1.77,7.36,1,1,Nivo,W,72,30.48665738,PD,PD,NCB,NA,NA,NA,NA
+GADGDF-Tu-0BV37I,GADGDF,Tu,Serous_Adenocarcinoma,1.77,7.36,1,1,Nivo,W,72,30.48665738,PD,PD,NCB,P,Sig1,Fallopian tube and ovary-left,Adnexa
+GADGDG-N-0C9S57,GADGDG,N,Serous_Adenocarcinoma,7.92,12.58,1,1,Combo,W,60,37.24289018,SD,SD_CB,CB,NA,NA,NA,NA
+GADGDG-Tu-0CDR8Y,GADGDG,Tu,Serous_Adenocarcinoma,7.92,12.58,1,1,Combo,W,60,37.24289018,SD,SD_CB,CB,P,Sig2,Fallopian tube and ovary-left,Adnexa
+GADGEI-Tu-0BXN5K,GADGEI,Tu,Serous_Adenocarcinoma,5.85,27.63,1,1,Nivo,W,58,33.34820885,SD,SD_NCB,NCB,P,Sig2,Ovary-left,Adnexa
+GADGEM-N-0C9S68,GADGEM,N,Serous_Adenocarcinoma,1.87,29.08,1,1,Nivo,W,68,40.234375,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADGEM-Tu-0BVOME,GADGEM,Tu,Serous_Adenocarcinoma,1.87,29.08,1,1,Nivo,W,68,40.234375,SD,SD_NCB,NCB,P,Sig1,Fallopian tube and ovary-right,Adnexa
+GADGFE-N-0C9S9N,GADGFE,N,Serous_Adenocarcinoma,5.59,34.86,1,1,Combo,W,78,31.48365514,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADGFF-N-0C9S9P,GADGFF,N,Serous_Adenocarcinoma,21.95,21.95,1,1,Nivo,W,74,23.69708214,SD,SD_CB,CB,NA,NA,NA,NA
+GADGFF-Tu-0BVOSG,GADGFF,Tu,Serous_Adenocarcinoma,21.95,21.95,1,1,Nivo,W,74,23.69708214,SD,SD_CB,CB,M,Sig2,"Soft tissue, abdomen","Soft tissue, abdomen"
+GADGFI-Tu-0BY3CH,GADGFI,Tu,Serous_Adenocarcinoma,0.56,3.02,1,1,Nivo,W,75,20.65149803,PD,PD,NCB,P,Sig2,Ovary-left,Adnexa
+GADGFK-N-0C9SAP,GADGFK,N,Serous_Adenocarcinoma,2,12.29,1,1,Combo,W,62,34.0784616,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADGFK-Tu-0CDRC0,GADGFK,Tu,Serous_Adenocarcinoma,2,12.29,1,1,Combo,W,62,34.0784616,SD,SD_NCB,NCB,P,Sig1,Fallopian tube and ovary-right,Adnexa
+GADGGB-N-0C9S4Z,GADGGB,N,Serous_Adenocarcinoma,1.48,19.84,1,1,Nivo,W,53,18.51239669,PD,PD,NCB,NA,NA,NA,NA
+GADGGB-Tu-0CDRC8,GADGGB,Tu,Serous_Adenocarcinoma,1.48,19.84,1,1,Nivo,W,53,18.51239669,PD,PD,NCB,P,Sig1,Adnexa-left,Adnexa
+GADGGC-N-0C9S7C,GADGGC,N,Serous_Adenocarcinoma,3.68,49.41,1,1,Combo,W,66,29.00223267,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADGGC-Tu-0CDRCU,GADGGC,Tu,Serous_Adenocarcinoma,3.68,49.41,1,1,Combo,W,66,29.00223267,SD,SD_NCB,NCB,P,Sig1,Ovary-right,Adnexa
+GADGGE-N-0C9S5B,GADGGE,N,Serous_Adenocarcinoma,1.38,3.42,1,1,Combo,W,54,27.80372634,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADGGF-N-0C9S81,GADGGF,N,Mixed_Epithelial,1.74,1.94,1,1,Nivo,W,78,31.93496879,PD,PD,NCB,NA,NA,NA,NA
+GADGGF-Tu-0BVMWG,GADGGF,Tu,Mixed_Epithelial,1.74,1.94,1,1,Nivo,W,78,31.93496879,PD,PD,NCB,M,Sig2,Adnexa-right,Adnexa
+GADGGJ-Tu-0CDRDU,GADGGJ,Tu,Serous_Adenocarcinoma,11.27,22.24,1,1,Combo,W,56,37.45023936,SD,SD_CB,CB,P,Sig2,Ovary-left,Adnexa
+GADGGK-N-0C9S5G,GADGGK,N,Serous_Adenocarcinoma,1.74,36.34,1,1,Nivo,W,63,25.64395671,PD,PD,NCB,NA,NA,NA,NA
+GADGGL-N-0C9S6F,GADGGL,N,Serous_Adenocarcinoma,1.77,57.53,1,1,Nivo,W,43,24.8015873,PD,PD,NCB,NA,NA,NA,NA
+GADGGL-Tu-0BXU5G,GADGGL,Tu,Serous_Adenocarcinoma,1.77,57.53,1,1,Nivo,W,43,24.8015873,PD,PD,NCB,P,Sig1,Ovary-right,Adnexa
+GADGGS-N-0C9S7V,GADGGS,N,Clear_Cell,0.95,3.42,1,1,Nivo,W,61,20.88275586,PD,PD,NCB,NA,NA,NA,NA
+GADGGS-Tu-0BWDCS,GADGGS,Tu,Clear_Cell,0.95,3.42,1,1,Nivo,W,61,20.88275586,PD,PD,NCB,P,Sig1,Ovary-right,Adnexa
+GADGHG-N-0C9S5T,GADGHG,N,Serous_Adenocarcinoma,17.68,64.59,0,0,Combo,W,58,32.8125,CR,CR,CB,NA,NA,NA,NA
+GADGHG-Tu-0CDRFO,GADGHG,Tu,Serous_Adenocarcinoma,17.68,64.59,0,0,Combo,W,58,32.8125,CR,CR,CB,P,Sig1,Fallopian tube-left,Adnexa
+GADGHK-N-0C9S79,GADGHK,N,Serous_Adenocarcinoma,8.31,15.93,1,1,Combo,W,58,22.95871667,PR,PR,CB,NA,NA,NA,NA
+GADGHK-Tu-0BYKS6,GADGHK,Tu,Serous_Adenocarcinoma,8.31,15.93,1,1,Combo,W,58,22.95871667,PR,PR,CB,M,Sig2,Omentum,Omentum
+GADGHL-N-0C9S78,GADGHL,N,Serous_Adenocarcinoma,1.84,8.9,1,1,Nivo,W,72,30.43208121,PD,PD,NCB,NA,NA,NA,NA
+GADGHL-Tu-0CDRGA,GADGHL,Tu,Serous_Adenocarcinoma,1.84,8.9,1,1,Nivo,W,72,30.43208121,PD,PD,NCB,P,Sig2,Fallopian tube and ovary-left,Adnexa
+GADGHS-N-0C9S6Z,GADGHS,N,Serous_Adenocarcinoma,3.52,26.84,1,0,Nivo,#,49,28.08852763,SD,SD_NCB,NCB,NA,NA,NA,NA
+GADGHS-Tu-0BVTZX,GADGHS,Tu,Serous_Adenocarcinoma,3.52,26.84,1,0,Nivo,#,49,28.08852763,SD,SD_NCB,NCB,P,Sig2,Fallopian tube and ovary-left,Adnexa
+GADGHU-Tu-0C3DA6,GADGHU,Tu,Serous_Adenocarcinoma,2,14.26,1,1,Nivo,W,42,29.70605523,SD,SD_NCB,NCB,P,Sig2,Ovary-left,Adnexa
+GADGHX-N-0C9SAR,GADGHX,N,Serous_Adenocarcinoma,7.56,10.41,1,1,Combo,W,80,23.5431876,PR,PR,CB,NA,NA,NA,NA
+GADGHX-Tu-0CDREO,GADGHX,Tu,Serous_Adenocarcinoma,7.56,10.41,1,1,Combo,W,80,23.5431876,PR,PR,CB,P,Sig2,Fallopian tube and ovary-right,Adnexa
+GADGIH-N-0C9S6P,GADGIH,N,Serous_Adenocarcinoma,1.87,20.14,1,1,Combo,W,76,20.00297442,PD,PD,NCB,NA,NA,NA,NA
+GADGIH-Tu-0BWR2T,GADGIH,Tu,Serous_Adenocarcinoma,1.87,20.14,1,1,Combo,W,76,20.00297442,PD,PD,NCB,P,Sig2,Adnexa-left,Adnexa
+GADGII-N-0C9S7W,GADGII,N,Serous_Adenocarcinoma,2.33,34.3,1,1,Nivo,N,47,25.61810679,PD,PD,NCB,NA,NA,NA,NA
+GADGII-Tu-0CDRI4,GADGII,Tu,Serous_Adenocarcinoma,2.33,34.3,1,1,Nivo,N,47,25.61810679,PD,PD,NCB,P,Sig1,Ovary-left,Adnexa
+GADGIM-N-0C9S74,GADGIM,N,Clear_Cell,27.2,61.31,0,0,Combo,W,71,27.69692585,CR,CR,CB,NA,NA,NA,NA
+GADGIM-Tu-0BVRXH,GADGIM,Tu,Clear_Cell,27.2,61.31,0,0,Combo,W,71,27.69692585,CR,CR,CB,P,Sig2,Ovary-left,Adnexa
+GADGIN-N-0C9S5I,GADGIN,N,Serous_Adenocarcinoma,7.39,63.11,1,0,Combo,W,50,39.92663169,PR,PR,CB,NA,NA,NA,NA
+GADGIN-Tu-0CDRHI,GADGIN,Tu,Serous_Adenocarcinoma,7.39,63.11,1,0,Combo,W,50,39.92663169,PR,PR,CB,M,Sig1,Rectouterine pouch (cul de sac),Peritoneum
+GADGIZ-N-0C9S5W,GADGIZ,N,Serous_Adenocarcinoma,3.48,6.21,1,1,Nivo,W,70,31.80465416,PR,PR,CB,NA,NA,NA,NA
+GADGIZ-Tu-0CDRIQ,GADGIZ,Tu,Serous_Adenocarcinoma,3.48,6.21,1,1,Nivo,W,70,31.80465416,PR,PR,CB,P,Sig2,Fallopian tube-right,Adnexa
+GADGJI-N-0C9S5A,GADGJI,N,Clear_Cell,5.62,9.07,1,1,Combo,W,47,20.5859375,PR,PR,CB,NA,NA,NA,NA
+GADGJI-Tu-0CDRJY,GADGJI,Tu,Clear_Cell,5.62,9.07,1,1,Combo,W,47,20.5859375,PR,PR,CB,P,Sig2,Ovary-left,Adnexa
+GADGJP-Tu-0BVOOD,GADGJP,Tu,Clear_Cell,17.48,73.86,0,0,Combo,W,38,34.91055682,CR,CR,CB,P,Sig2,Fallopian tube and ovary-right,Adnexa
+GADGJW-Tu-0BVZM0,GADGJW,Tu,Serous_Adenocarcinoma,2.99,30.29,1,1,Nivo,W,77,26.22922438,SD,SD_NCB,NCB,P,Sig2,Omentum,Omentum
+GADGKJ-N-0C9S97,GADGKJ,N,Serous_Adenocarcinoma,2.53,24.8,1,1,Combo,W,53,36.73094582,PD,PD,NCB,NA,NA,NA,NA
+GADGKJ-Tu-0CDRKK,GADGKJ,Tu,Serous_Adenocarcinoma,2.53,24.8,1,1,Combo,W,53,36.73094582,PD,PD,NCB,M,Sig2,Omentum,Omentum
+GADGMX-N-0C9S9J,GADGMX,N,Serous_Adenocarcinoma,1.87,16.39,1,1,Nivo,W,49,51.31771227,PD,PD,NCB,NA,NA,NA,NA
+GADGMX-Tu-0CDRL6,GADGMX,Tu,Serous_Adenocarcinoma,1.87,16.39,1,1,Nivo,W,49,51.31771227,PD,PD,NCB,P,Sig1,Omentum,Omentum

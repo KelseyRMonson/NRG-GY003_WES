@@ -3,6 +3,7 @@ annotation/
 csv/
 variant_calling/
 reports/
+multiqc/multiqc_data/
 
 # R files to ignore
 # History files

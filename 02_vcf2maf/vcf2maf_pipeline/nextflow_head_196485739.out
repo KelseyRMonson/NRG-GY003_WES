@@ -1,0 +1,802 @@
+Sender: LSF System <lsfadmin@lc06e35>
+Subject: Job 196485739: <vcf2maf_nextflow_head> in cluster <chimera> Done
+
+Job <vcf2maf_nextflow_head> was submitted from host <li04e03> by user <monsok03> in cluster <chimera> at Fri Jul 18 14:29:03 2025
+Job was executed on host(s) <lc06e35>, in queue <premium>, as user <monsok03> in cluster <chimera> at Fri Jul 18 14:29:05 2025
+</hpc/users/monsok03> was used as the home directory.
+</sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline> was used as the working directory.
+Started at Fri Jul 18 14:29:05 2025
+Terminated at Fri Jul 18 14:41:20 2025
+Results reported at Fri Jul 18 14:41:20 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J vcf2maf_nextflow_head
+#BSUB -P acc_NGSCRC
+#BSUB -q premium
+#BSUB -n 1
+#BSUB -W 12:00
+#BSUB -R rusage[mem=8000]
+#BSUB -o nextflow_head_%J.out
+#BSUB -e nextflow_head_%J.err
+#BSUB -L /bin/bash
+
+# Exit on any error
+set -euo pipefail
+
+# Set proxy settings
+export http_proxy=http://172.28.7.1:3128
+export https_proxy=http://172.28.7.1:3128
+export all_proxy=http://172.28.7.1:3128
+
+# Reduce Java memory usage for the head job
+export JAVA_OPTS="-Xms1g -Xmx4g -XX:+UseSerialGC"
+export NXF_OPTS="-Xms1g -Xmx4g -XX:+UseSerialGC"
+
+# Disable virtual threads to reduce threading issues
+export NXF_ENABLE_VIRTUAL_THREADS=false
+
+# Set working directory
+cd /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline
+
+# Load required modules
+module load java/21.0.4
+module load nextflow
+
+echo "=== Starting VCF2MAF Pipeline ==="
+echo "Date: $(date)"
+echo "Working directory: $(pwd)"
+echo "Java version: $(java -version 2>&1 | head -1)"
+echo "Nextflow version: $(nextflow -version)"
+
+# Clean up previous run
+echo "Cleaning up previous runs..."
+rm -rf work/ .nextflow* final_results/
+
+# Create samplesheet
+echo "Creating samplesheet..."
+if [ ! -f "create_samplesheet.sh" ]; then
+    echo "ERROR: create_samplesheet.sh not found!"
+    exit 1
+fi
+
+
+(... more ...)
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   31.42 sec.
+    Max Memory :                                 502 MB
+    Average Memory :                             466.41 MB
+    Total Requested Memory :                     8000.00 MB
+    Delta Memory :                               7498.00 MB
+    Max Swap :                                   -
+    Max Processes :                              9
+    Max Threads :                                54
+    Run time :                                   735 sec.
+    Turnaround time :                            737 sec.
+
+The output (if any) follows:
+
+=== Starting VCF2MAF Pipeline ===
+Date: Fri Jul 18 02:29:07 PM EDT 2025
+Working directory: /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline
+Java version: java version "21.0.4" 2024-07-16 LTS
+Nextflow version: 
+      N E X T F L O W
+      version 24.04.4 build 5917
+      created 01-08-2024 07:05 UTC (03:05 EDT)
+      cite doi:10.1038/nbt.3820
+      http://nextflow.io
+Cleaning up previous runs...
+Creating samplesheet...
+Created samplesheet.csv with:
+  Total samples: 86
+  Paired samples (tumor + germline): 73
+  Tumor-only samples: 13
+Samplesheet created with 86 samples
+First few lines of samplesheet:
+sample_id,somatic_vcf,germline_vcf,has_germline
+GABJHS,/sc/arion/projects/NGSCRC/Work/NRG-GY003/WES/Final_Annotated_Consensus_VCFs/GABJHS/final_annotated_refined_high_quality_consensus_GABJHS_2plus_callers_SOMATIC.vcf.gz,/sc/arion/projects/NGSCRC/Work/NRG-GY003/WES/Final_Annotated_Consensus_VCFs/GABJHS/final_consensus_pathogenic_germline_GABJHS.vcf.gz,true
+GADBKF,/sc/arion/projects/NGSCRC/Work/NRG-GY003/WES/Final_Annotated_Consensus_VCFs/GADBKF/final_annotated_refined_high_quality_consensus_GADBKF_2plus_callers_SOMATIC.vcf.gz,/sc/arion/projects/NGSCRC/Work/NRG-GY003/WES/Final_Annotated_Consensus_VCFs/GADBKF/final_consensus_pathogenic_germline_GADBKF.vcf.gz,true
+GADCFX,/sc/arion/projects/NGSCRC/Work/NRG-GY003/WES/Final_Annotated_Consensus_VCFs/GADCFX/final_annotated_refined_high_quality_consensus_GADCFX_2plus_callers_SOMATIC.vcf.gz,/sc/arion/projects/NGSCRC/Work/NRG-GY003/WES/Final_Annotated_Consensus_VCFs/GADCFX/final_consensus_pathogenic_germline_GADCFX.vcf.gz,true
+GADCGA,/sc/arion/projects/NGSCRC/Work/NRG-GY003/WES/Final_Annotated_Consensus_VCFs/GADCGA/final_annotated_refined_high_quality_consensus_GADCGA_2plus_callers_SOMATIC.vcf.gz,/sc/arion/projects/NGSCRC/Work/NRG-GY003/WES/Final_Annotated_Consensus_VCFs/GADCGA/final_consensus_pathogenic_germline_GADCGA.vcf.gz,true
+=== Starting Nextflow Pipeline ===
+Date: Fri Jul 18 02:29:11 PM EDT 2025
+
+ N E X T F L O W   ~  version 24.04.4
+
+WARN: It appears you have never run this project before -- Option `-resume` is ignored
+Launching `complete_working_pipeline.nf` [fabulous_mcnulty] DSL2 - revision: 1b3109572b
+
+[-        ] VCF2MAF_SOMATIC_WORKING  -
+[-        ] VCF2MAF_GERMLINE_WORKING -
+
+[-        ] VCF2MAF_SOMATIC_WORKING  -
+[-        ] VCF2MAF_GERMLINE_WORKING -
+[-        ] MERGE_ALL_MAFS           -
+WARN: There's no process matching config selector: VCF2MAF_SOMATIC
+WARN: There's no process matching config selector: VCF2MAF_GERMLINE
+WARN: There's no process matching config selector: MERGE_MAFS -- Did you mean: MERGE_ALL_MAFS?
+
+[-        ] VCF2MAF_SOMATIC_WORKING  | 0 of 11
+[-        ] VCF2MAF_GERMLINE_WORKING | 0 of 13
+[-        ] MERGE_ALL_MAFS           -
+WARN: There's no process matching config selector: VCF2MAF_SOMATIC
+WARN: There's no process matching config selector: VCF2MAF_GERMLINE
+WARN: There's no process matching config selector: MERGE_MAFS -- Did you mean: MERGE_ALL_MAFS?
+
+[-        ] VCF2MAF_SOMATIC_WORKING  | 0 of 35
+[-        ] VCF2MAF_GERMLINE_WORKING | 0 of 32
+[-        ] MERGE_ALL_MAFS           -
+WARN: There's no process matching config selector: VCF2MAF_SOMATIC
+WARN: There's no process matching config selector: VCF2MAF_GERMLINE
+WARN: There's no process matching config selector: MERGE_MAFS -- Did you mean: MERGE_ALL_MAFS?
+
+[-        ] VCF2MAF_SOMATIC_WORKING  | 0 of 55
+[-        ] VCF2MAF_GERMLINE_WORKING | 0 of 55
+[-        ] MERGE_ALL_MAFS           -
+WARN: There's no process matching config selector: VCF2MAF_SOMATIC
+WARN: There's no process matching config selector: VCF2MAF_GERMLINE
+WARN: There's no process matching config selector: MERGE_MAFS -- Did you mean: MERGE_ALL_MAFS?
+
+[-        ] VCF2MAF_SOMATIC_WORKING  | 0 of 62
+[-        ] VCF2MAF_GERMLINE_WORKING | 0 of 63
+[-        ] MERGE_ALL_MAFS           -
+WARN: There's no process matching config selector: VCF2MAF_SOMATIC
+WARN: There's no process matching config selector: VCF2MAF_GERMLINE
+WARN: There's no process matching config selector: MERGE_MAFS -- Did you mean: MERGE_ALL_MAFS?
+
+executor >  lsf (2)
+[49/efa4b5] VCF2MAF_SOMATIC_WORKING (1)  | 0 of 86
+[fe/20b7c8] VCF2MAF_GERMLINE_WORKING (1) | 0 of 73
+[-        ] MERGE_ALL_MAFS               -
+WARN: There's no process matching config selector: VCF2MAF_SOMATIC
+WARN: There's no process matching config selector: VCF2MAF_GERMLINE
+WARN: There's no process matching config selector: MERGE_MAFS -- Did you mean: MERGE_ALL_MAFS?
+
+executor >  lsf (3)
+[06/8a278c] VCF2MAF_SOMATIC_WORKING (2)  | 0 of 86
+[fe/20b7c8] VCF2MAF_GERMLINE_WORKING (1) | 0 of 73
+[-        ] MERGE_ALL_MAFS               -
+WARN: There's no process matching config selector: VCF2MAF_SOMATIC
+WARN: There's no process matching config selector: VCF2MAF_GERMLINE
+WARN: There's no process matching config selector: MERGE_MAFS -- Did you mean: MERGE_ALL_MAFS?
+
+executor >  lsf (5)
+[06/8a278c] VCF2MAF_SOMATIC_WORKING (2)  | 0 of 86
+[3b/6ae278] VCF2MAF_GERMLINE_WORKING (4) | 0 of 73
+[-        ] MERGE_ALL_MAFS               -
+WARN: There's no process matching config selector: VCF2MAF_SOMATIC
+WARN: There's no process matching config selector: VCF2MAF_GERMLINE
+WARN: There's no process matching config selector: MERGE_MAFS -- Did you mean: MERGE_ALL_MAFS?
+
+executor >  lsf (7)
+[05/469dc4] VCF2MAF_SOMATIC_WORKING (3)  | 0 of 86
+[b7/17f73e] VCF2MAF_GERMLINE_WORKING (3) | 0 of 73
+[-        ] MERGE_ALL_MAFS               -
+WARN: There's no process matching config selector: VCF2MAF_SOMATIC
+WARN: There's no process matching config selector: VCF2MAF_GERMLINE
+WARN: There's no process matching config selector: MERGE_MAFS -- Did you mean: MERGE_ALL_MAFS?
+
+executor >  lsf (9)
+[3a/873e0b] VCF2MAF_SOMATIC_WORKING (4)  | 0 of 86
+[dd/8ddcd5] VCF2MAF_GERMLINE_WORKING (5) | 0 of 73
+[-        ] MERGE_ALL_MAFS               -
+WARN: There's no process matching config selector: VCF2MAF_SOMATIC
+WARN: There's no process matching config selector: VCF2MAF_GERMLINE
+WARN: There's no process matching config selector: MERGE_MAFS -- Did you mean: MERGE_ALL_MAFS?
+
+executor >  lsf (10)
+[e0/0b8220] VCF2MAF_SOMATIC_WORKING (5)  | 0 of 86
+[dd/8ddcd5] VCF2MAF_GERMLINE_WORKING (5) | 0 of 73
+[-        ] MERGE_ALL_MAFS               -
+WARN: There's no process matching config selector: VCF2MAF_SOMATIC
+WARN: There's no process matching config selector: VCF2MAF_GERMLINE
+WARN: There's no process matching config selector: MERGE_MAFS -- Did you mean: MERGE_ALL_MAFS?
+
+executor >  lsf (10)
+[e0/0b8220] VCF2MAF_SOMATIC_WORKING (5)  | 0 of 86
+[dd/8ddcd5] VCF2MAF_GERMLINE_WORKING (5) | 0 of 73
+[-        ] MERGE_ALL_MAFS               -
+WARN: There's no process matching config selector: VCF2MAF_SOMATIC
+WARN: There's no process matching config selector: VCF2MAF_GERMLINE
+WARN: There's no process matching config selector: MERGE_MAFS -- Did you mean: MERGE_ALL_MAFS?
+
+executor >  lsf (10)
+[e0/0b8220] VCF2MAF_SOMATIC_WORKING (5)  | 0 of 86
+[a3/fbe329] VCF2MAF_GERMLINE_WORKING (2) | 1 of 73
+[-        ] MERGE_ALL_MAFS               -
+WARN: There's no process matching config selector: VCF2MAF_SOMATIC
+WARN: There's no process matching config selector: VCF2MAF_GERMLINE
+WARN: There's no process matching config selector: MERGE_MAFS -- Did you mean: MERGE_ALL_MAFS?
+
+executor >  lsf (10)
+[e0/0b8220] VCF2MAF_SOMATIC_WORKING (5)  | 0 of 86
+[fe/20b7c8] VCF2MAF_GERMLINE_WORKING (1) | 5 of 73
+[-        ] MERGE_ALL_MAFS               -
+WARN: There's no process matching config selector: VCF2MAF_SOMATIC
+WARN: There's no process matching config selector: VCF2MAF_GERMLINE
+WARN: There's no process matching config selector: MERGE_MAFS -- Did you mean: MERGE_ALL_MAFS?
+
+executor >  lsf (11)
+[e0/0b8220] VCF2MAF_SOMATIC_WORKING (5)  | 0 of 86
+[50/5e4f43] VCF2MAF_GERMLINE_WORKING (7) | 5 of 73
+[-        ] MERGE_ALL_MAFS               -
+WARN: There's no process matching config selector: VCF2MAF_SOMATIC
+WARN: There's no process matching config selector: VCF2MAF_GERMLINE
+WARN: There's no process matching config selector: MERGE_MAFS -- Did you mean: MERGE_ALL_MAFS?
+
+executor >  lsf (13)
+[6b/6262b0] VCF2MAF_SOMATIC_WORKING (6)  | 0 of 86
+[b1/1584a5] VCF2MAF_GERMLINE_WORKING (8) | 5 of 73
+[-        ] MERGE_ALL_MAFS               -
+WARN: There's no process matching config selector: VCF2MAF_SOMATIC
+WARN: There's no process matching config selector: VCF2MAF_GERMLINE
+WARN: There's no process matching config selector: MERGE_MAFS -- Did you mean: MERGE_ALL_MAFS?
+
+executor >  lsf (15)
+[fb/b2cfb5] VCF2MAF_SOMATIC_WORKING (7)  | 0 of 86
+[e7/b689c9] VCF2MAF_GERMLINE_WORKING (6) | 5 of 73
+[-        ] MERGE_ALL_MAFS               -
+WARN: There's no process matching config selector: VCF2MAF_SOMATIC
+WARN: There's no process matching config selector: VCF2MAF_GERMLINE
+WARN: There's no process matching config selector: MERGE_MAFS -- Did you mean: MERGE_ALL_MAFS?
+
+executor >  lsf (15)
+[06/8a278c] VCF2MAF_SOMATIC_WORKING (2)  | 3 of 86
+[e7/b689c9] VCF2MAF_GERMLINE_WORKING (6) | 5 of 73
+[-        ] MERGE_ALL_MAFS               -
+
+
+
+
+executor >  lsf (16)
+[e0/0b8220] VCF2MAF_SOMATIC_WORKING (5)  | 5 of 86
+[4f/1ebc1c] VCF2MAF_GERMLINE_WORKING (9) | 8 of 73
+[-        ] MERGE_ALL_MAFS               -
+
+
+
+
+executor >  lsf (17)
+[e0/0b8220] VCF2MAF_SOMATIC_WORKING (5)   | 5 of 86
+[08/05ec6b] VCF2MAF_GERMLINE_WORKING (10) | 8 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (18)
+[40/00363e] VCF2MAF_SOMATIC_WORKING (8)   | 5 of 86
+[08/05ec6b] VCF2MAF_GERMLINE_WORKING (10) | 8 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (19)
+[40/00363e] VCF2MAF_SOMATIC_WORKING (8)   | 5 of 86
+[6c/23e284] VCF2MAF_GERMLINE_WORKING (12) | 8 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (22)
+[a6/fafdf4] VCF2MAF_SOMATIC_WORKING (9)   | 5 of 86
+[df/f80d50] VCF2MAF_GERMLINE_WORKING (11) | 8 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (23)
+[3f/80a635] VCF2MAF_SOMATIC_WORKING (10)  | 5 of 86
+[df/f80d50] VCF2MAF_GERMLINE_WORKING (11) | 8 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (23)
+[49/efa4b5] VCF2MAF_SOMATIC_WORKING (1)   | 7 of 86
+[df/f80d50] VCF2MAF_GERMLINE_WORKING (11) | 13 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (24)
+[49/b0e890] VCF2MAF_SOMATIC_WORKING (12)  | 8 of 86
+[df/f80d50] VCF2MAF_GERMLINE_WORKING (11) | 13 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (26)
+[64/30d576] VCF2MAF_SOMATIC_WORKING (11)  | 8 of 86
+[ec/1457c1] VCF2MAF_GERMLINE_WORKING (14) | 13 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (28)
+[e3/0b9b3c] VCF2MAF_SOMATIC_WORKING (14)  | 8 of 86
+[ec/1457c1] VCF2MAF_GERMLINE_WORKING (14) | 13 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (29)
+[0e/86befd] VCF2MAF_SOMATIC_WORKING (16)  | 8 of 86
+[ec/1457c1] VCF2MAF_GERMLINE_WORKING (14) | 13 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (31)
+[6e/56da15] VCF2MAF_SOMATIC_WORKING (15)  | 8 of 86
+[43/128673] VCF2MAF_GERMLINE_WORKING (15) | 13 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (31)
+[e3/0b9b3c] VCF2MAF_SOMATIC_WORKING (14)  | 11 of 86
+[43/128673] VCF2MAF_GERMLINE_WORKING (15) | 15 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (34)
+[2f/7034cb] VCF2MAF_SOMATIC_WORKING (18)  | 11 of 86
+[94/a0a995] VCF2MAF_GERMLINE_WORKING (16) | 15 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (36)
+[2f/7034cb] VCF2MAF_SOMATIC_WORKING (18)  | 11 of 86
+[bb/066a18] VCF2MAF_GERMLINE_WORKING (18) | 15 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (36)
+[0e/86befd] VCF2MAF_SOMATIC_WORKING (16)  | 16 of 86
+[bb/066a18] VCF2MAF_GERMLINE_WORKING (18) | 18 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (38)
+[4a/9541f0] VCF2MAF_SOMATIC_WORKING (19)  | 16 of 86
+[40/8ddd45] VCF2MAF_GERMLINE_WORKING (20) | 18 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (40)
+[d0/66fda5] VCF2MAF_SOMATIC_WORKING (20)  | 16 of 86
+[cd/ab7f87] VCF2MAF_GERMLINE_WORKING (21) | 18 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (42)
+[ee/5f5763] VCF2MAF_SOMATIC_WORKING (22)  | 16 of 86
+[cd/ab7f87] VCF2MAF_GERMLINE_WORKING (21) | 18 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (44)
+[ee/5f5763] VCF2MAF_SOMATIC_WORKING (22)  | 16 of 86
+[a1/5b6093] VCF2MAF_GERMLINE_WORKING (19) | 18 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (44)
+[40/00363e] VCF2MAF_SOMATIC_WORKING (8)   | 18 of 86
+[a1/5b6093] VCF2MAF_GERMLINE_WORKING (19) | 18 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (45)
+[d6/d6597a] VCF2MAF_SOMATIC_WORKING (24)  | 21 of 86
+[a1/5b6093] VCF2MAF_GERMLINE_WORKING (19) | 22 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (46)
+[d6/d6597a] VCF2MAF_SOMATIC_WORKING (24)  | 21 of 86
+[88/dae4a2] VCF2MAF_GERMLINE_WORKING (24) | 22 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (47)
+[d6/d6597a] VCF2MAF_SOMATIC_WORKING (24)  | 21 of 86
+[71/61043e] VCF2MAF_GERMLINE_WORKING (25) | 22 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (49)
+[f3/f5d861] VCF2MAF_SOMATIC_WORKING (23)  | 21 of 86
+[c0/9d5e46] VCF2MAF_GERMLINE_WORKING (26) | 22 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (51)
+[64/e6fb7e] VCF2MAF_SOMATIC_WORKING (25)  | 21 of 86
+[c0/9d5e46] VCF2MAF_GERMLINE_WORKING (26) | 22 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (52)
+[64/e6fb7e] VCF2MAF_SOMATIC_WORKING (25)  | 21 of 86
+[db/e335fd] VCF2MAF_GERMLINE_WORKING (23) | 22 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (53)
+[fb/ed4afc] VCF2MAF_SOMATIC_WORKING (28)  | 21 of 86
+[db/e335fd] VCF2MAF_GERMLINE_WORKING (23) | 22 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (53)
+[64/e6fb7e] VCF2MAF_SOMATIC_WORKING (25)  | 23 of 86
+[db/e335fd] VCF2MAF_GERMLINE_WORKING (23) | 26 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (55)
+[8c/8ce586] VCF2MAF_SOMATIC_WORKING (27)  | 24 of 86
+[7d/d56ef3] VCF2MAF_GERMLINE_WORKING (27) | 26 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (57)
+[3f/f0ce14] VCF2MAF_SOMATIC_WORKING (30)  | 24 of 86
+[6f/560ab7] VCF2MAF_GERMLINE_WORKING (28) | 26 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (58)
+[ad/65dbd0] VCF2MAF_SOMATIC_WORKING (29)  | 24 of 86
+[6f/560ab7] VCF2MAF_GERMLINE_WORKING (28) | 26 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (60)
+[ad/65dbd0] VCF2MAF_SOMATIC_WORKING (29)  | 24 of 86
+[69/824d39] VCF2MAF_GERMLINE_WORKING (29) | 26 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (60)
+[ad/65dbd0] VCF2MAF_SOMATIC_WORKING (29)  | 30 of 86
+[69/824d39] VCF2MAF_GERMLINE_WORKING (29) | 30 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (62)
+[d4/ab00f3] VCF2MAF_SOMATIC_WORKING (32)  | 30 of 86
+[69/824d39] VCF2MAF_GERMLINE_WORKING (29) | 30 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (64)
+[ba/b87b11] VCF2MAF_SOMATIC_WORKING (33)  | 30 of 86
+[37/098f7b] VCF2MAF_GERMLINE_WORKING (31) | 30 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (65)
+[bf/862f55] VCF2MAF_SOMATIC_WORKING (35)  | 30 of 86
+[37/098f7b] VCF2MAF_GERMLINE_WORKING (31) | 30 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (68)
+[fa/a2d552] VCF2MAF_SOMATIC_WORKING (34)  | 30 of 86
+[c7/5bd0c3] VCF2MAF_GERMLINE_WORKING (32) | 30 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (70)
+[8a/afc940] VCF2MAF_SOMATIC_WORKING (38)  | 30 of 86
+[c7/5bd0c3] VCF2MAF_GERMLINE_WORKING (32) | 30 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (70)
+[8a/afc940] VCF2MAF_SOMATIC_WORKING (38)  | 30 of 86
+[c7/5bd0c3] VCF2MAF_GERMLINE_WORKING (32) | 30 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (70)
+[8a/afc940] VCF2MAF_SOMATIC_WORKING (38)  | 33 of 86
+[c7/5bd0c3] VCF2MAF_GERMLINE_WORKING (32) | 33 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (72)
+[8a/afc940] VCF2MAF_SOMATIC_WORKING (38)  | 33 of 86
+[98/abc203] VCF2MAF_GERMLINE_WORKING (34) | 33 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (75)
+[9e/8544c5] VCF2MAF_SOMATIC_WORKING (37)  | 33 of 86
+[7c/7d3bd1] VCF2MAF_GERMLINE_WORKING (36) | 33 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (76)
+[92/14c6b2] VCF2MAF_SOMATIC_WORKING (39)  | 33 of 86
+[7c/7d3bd1] VCF2MAF_GERMLINE_WORKING (36) | 33 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (76)
+[4d/b4af94] VCF2MAF_SOMATIC_WORKING (31)  | 34 of 86
+[7c/7d3bd1] VCF2MAF_GERMLINE_WORKING (36) | 33 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (78)
+[50/526701] VCF2MAF_SOMATIC_WORKING (40)  | 35 of 86
+[c5/450f61] VCF2MAF_GERMLINE_WORKING (38) | 37 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (79)
+[50/526701] VCF2MAF_SOMATIC_WORKING (40)  | 35 of 86
+[95/8c1580] VCF2MAF_GERMLINE_WORKING (39) | 37 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (81)
+[f7/b128d9] VCF2MAF_SOMATIC_WORKING (41)  | 35 of 86
+[2a/972f06] VCF2MAF_GERMLINE_WORKING (40) | 37 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (82)
+[f7/b128d9] VCF2MAF_SOMATIC_WORKING (41)  | 35 of 86
+[81/36c2b1] VCF2MAF_GERMLINE_WORKING (41) | 37 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (82)
+[15/a24fec] VCF2MAF_SOMATIC_WORKING (36)  | 39 of 86
+[c5/450f61] VCF2MAF_GERMLINE_WORKING (38) | 38 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (84)
+[1b/585c0b] VCF2MAF_SOMATIC_WORKING (42)  | 41 of 86
+[81/36c2b1] VCF2MAF_GERMLINE_WORKING (41) | 41 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (87)
+[38/dd0b26] VCF2MAF_SOMATIC_WORKING (44)  | 41 of 86
+[01/fb3962] VCF2MAF_GERMLINE_WORKING (42) | 41 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (89)
+[56/e286ee] VCF2MAF_SOMATIC_WORKING (45)  | 41 of 86
+[90/6a6dd3] VCF2MAF_GERMLINE_WORKING (45) | 41 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (91)
+[53/480f39] VCF2MAF_SOMATIC_WORKING (46)  | 41 of 86
+[a3/b6d120] VCF2MAF_GERMLINE_WORKING (44) | 41 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (92)
+[53/480f39] VCF2MAF_SOMATIC_WORKING (46)  | 41 of 86
+[40/bd0b76] VCF2MAF_GERMLINE_WORKING (46) | 41 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (92)
+[53/480f39] VCF2MAF_SOMATIC_WORKING (46)  | 44 of 86
+[40/bd0b76] VCF2MAF_GERMLINE_WORKING (46) | 46 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (95)
+[7a/723245] VCF2MAF_SOMATIC_WORKING (48)  | 44 of 86
+[d6/4c85f3] VCF2MAF_GERMLINE_WORKING (48) | 46 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (96)
+[4b/85de8b] VCF2MAF_SOMATIC_WORKING (49)  | 44 of 86
+[d6/4c85f3] VCF2MAF_GERMLINE_WORKING (48) | 46 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (97)
+[4b/85de8b] VCF2MAF_SOMATIC_WORKING (49)  | 44 of 86
+[87/09971a] VCF2MAF_GERMLINE_WORKING (47) | 46 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (99)
+[4b/85de8b] VCF2MAF_SOMATIC_WORKING (49)  | 44 of 86
+[6c/25f192] VCF2MAF_GERMLINE_WORKING (50) | 46 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (100)
+[73/cd7c7d] VCF2MAF_SOMATIC_WORKING (50)  | 44 of 86
+[6c/25f192] VCF2MAF_GERMLINE_WORKING (50) | 46 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (100)
+[c5/1f7b8d] VCF2MAF_SOMATIC_WORKING (43)  | 45 of 86
+[6c/25f192] VCF2MAF_GERMLINE_WORKING (50) | 46 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (102)
+[a5/fda386] VCF2MAF_SOMATIC_WORKING (51)  | 49 of 86
+[7c/b1c361] VCF2MAF_GERMLINE_WORKING (52) | 50 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (105)
+[7a/80b111] VCF2MAF_SOMATIC_WORKING (53)  | 49 of 86
+[f0/113e86] VCF2MAF_GERMLINE_WORKING (53) | 50 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (106)
+[7a/80b111] VCF2MAF_SOMATIC_WORKING (53)  | 49 of 86
+[87/8f5c54] VCF2MAF_GERMLINE_WORKING (54) | 50 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (109)
+[06/fdcbef] VCF2MAF_SOMATIC_WORKING (52)  | 49 of 86
+[f5/f9ede9] VCF2MAF_GERMLINE_WORKING (55) | 50 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (109)
+[06/fdcbef] VCF2MAF_SOMATIC_WORKING (52)  | 53 of 86
+[f5/f9ede9] VCF2MAF_GERMLINE_WORKING (55) | 55 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (112)
+[fa/307bf3] VCF2MAF_SOMATIC_WORKING (55)  | 53 of 86
+[2e/763534] VCF2MAF_GERMLINE_WORKING (57) | 55 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (114)
+[71/28c88c] VCF2MAF_SOMATIC_WORKING (56)  | 53 of 86
+[ba/029ddb] VCF2MAF_GERMLINE_WORKING (59) | 55 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (116)
+[18/1cc0b2] VCF2MAF_SOMATIC_WORKING (57)  | 53 of 86
+[e2/d54de5] VCF2MAF_GERMLINE_WORKING (58) | 55 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (118)
+[57/c60270] VCF2MAF_SOMATIC_WORKING (60)  | 53 of 86
+[e2/d54de5] VCF2MAF_GERMLINE_WORKING (58) | 55 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (118)
+[fa/307bf3] VCF2MAF_SOMATIC_WORKING (55)  | 54 of 86
+[e2/d54de5] VCF2MAF_GERMLINE_WORKING (58) | 55 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (119)
+[18/1cc0b2] VCF2MAF_SOMATIC_WORKING (57)  | 56 of 86
+[8c/4d14ca] VCF2MAF_GERMLINE_WORKING (61) | 59 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (122)
+[29/1e0916] VCF2MAF_SOMATIC_WORKING (61)  | 56 of 86
+[56/564991] VCF2MAF_GERMLINE_WORKING (62) | 59 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (123)
+[29/1e0916] VCF2MAF_SOMATIC_WORKING (61)  | 56 of 86
+[20/9b92f6] VCF2MAF_GERMLINE_WORKING (63) | 59 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (124)
+[52/52e24a] VCF2MAF_SOMATIC_WORKING (59)  | 56 of 86
+[20/9b92f6] VCF2MAF_GERMLINE_WORKING (63) | 59 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (125)
+[01/57037a] VCF2MAF_SOMATIC_WORKING (62)  | 56 of 86
+[20/9b92f6] VCF2MAF_GERMLINE_WORKING (63) | 59 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (125)
+[a5/fda386] VCF2MAF_SOMATIC_WORKING (51)  | 59 of 86
+[56/564991] VCF2MAF_GERMLINE_WORKING (62) | 62 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (125)
+[52/52e24a] VCF2MAF_SOMATIC_WORKING (59)  | 61 of 86
+[20/9b92f6] VCF2MAF_GERMLINE_WORKING (63) | 63 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (127)
+[52/52e24a] VCF2MAF_SOMATIC_WORKING (59)  | 61 of 86
+[6f/f2d38f] VCF2MAF_GERMLINE_WORKING (65) | 63 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (128)
+[52/52e24a] VCF2MAF_SOMATIC_WORKING (59)  | 61 of 86
+[df/9e33f4] VCF2MAF_GERMLINE_WORKING (66) | 63 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (131)
+[38/619524] VCF2MAF_SOMATIC_WORKING (64)  | 61 of 86
+[3f/d05757] VCF2MAF_GERMLINE_WORKING (67) | 63 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (134)
+[f9/2c18c1] VCF2MAF_SOMATIC_WORKING (65)  | 61 of 86
+[e0/83497e] VCF2MAF_GERMLINE_WORKING (68) | 63 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (134)
+[ff/72e758] VCF2MAF_SOMATIC_WORKING (67)  | 64 of 86
+[e0/83497e] VCF2MAF_GERMLINE_WORKING (68) | 68 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (137)
+[5b/0cabed] VCF2MAF_SOMATIC_WORKING (66)  | 64 of 86
+[80/a602f3] VCF2MAF_GERMLINE_WORKING (70) | 68 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (140)
+[9b/4a107c] VCF2MAF_SOMATIC_WORKING (70)  | 64 of 86
+[60/d76160] VCF2MAF_GERMLINE_WORKING (71) | 68 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (142)
+[7d/920511] VCF2MAF_SOMATIC_WORKING (71)  | 64 of 86
+[e6/800817] VCF2MAF_GERMLINE_WORKING (72) | 68 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (143)
+[b8/a88432] VCF2MAF_SOMATIC_WORKING (69)  | 69 of 86
+[e6/800817] VCF2MAF_GERMLINE_WORKING (72) | 72 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (145)
+[41/8dd902] VCF2MAF_SOMATIC_WORKING (72)  | 69 of 86
+[91/39c165] VCF2MAF_GERMLINE_WORKING (73) | 72 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (147)
+[9a/abd25c] VCF2MAF_SOMATIC_WORKING (74)  | 69 of 86
+[91/39c165] VCF2MAF_GERMLINE_WORKING (73) | 72 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (149)
+[87/e63280] VCF2MAF_SOMATIC_WORKING (77)  | 69 of 86
+[91/39c165] VCF2MAF_GERMLINE_WORKING (73) | 72 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (151)
+[8d/48c9e8] VCF2MAF_SOMATIC_WORKING (75)  | 69 of 86
+[91/39c165] VCF2MAF_GERMLINE_WORKING (73) | 72 of 73
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (151)
+[eb/e9e47f] VCF2MAF_SOMATIC_WORKING (76)  | 76 of 86
+[91/39c165] VCF2MAF_GERMLINE_WORKING (73) | 73 of 73 ✔
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (154)
+[1c/93c4f2] VCF2MAF_SOMATIC_WORKING (81)  | 76 of 86
+[91/39c165] VCF2MAF_GERMLINE_WORKING (73) | 73 of 73 ✔
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (156)
+[30/ffa66d] VCF2MAF_SOMATIC_WORKING (84)  | 76 of 86
+[91/39c165] VCF2MAF_GERMLINE_WORKING (73) | 73 of 73 ✔
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (157)
+[4d/c62665] VCF2MAF_SOMATIC_WORKING (83)  | 76 of 86
+[91/39c165] VCF2MAF_GERMLINE_WORKING (73) | 73 of 73 ✔
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (159)
+[b8/07d6b9] VCF2MAF_SOMATIC_WORKING (85)  | 76 of 86
+[91/39c165] VCF2MAF_GERMLINE_WORKING (73) | 73 of 73 ✔
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (159)
+[4b/ee9d5d] VCF2MAF_SOMATIC_WORKING (79)  | 79 of 86
+[91/39c165] VCF2MAF_GERMLINE_WORKING (73) | 73 of 73 ✔
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (159)
+[f7/fa5886] VCF2MAF_SOMATIC_WORKING (82)  | 82 of 86
+[91/39c165] VCF2MAF_GERMLINE_WORKING (73) | 73 of 73 ✔
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (159)
+[1c/93c4f2] VCF2MAF_SOMATIC_WORKING (81)  | 85 of 86
+[91/39c165] VCF2MAF_GERMLINE_WORKING (73) | 73 of 73 ✔
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (159)
+[f6/2acfdb] VCF2MAF_SOMATIC_WORKING (80)  | 86 of 86 ✔
+[91/39c165] VCF2MAF_GERMLINE_WORKING (73) | 73 of 73 ✔
+[-        ] MERGE_ALL_MAFS                -
+
+executor >  lsf (160)
+[f6/2acfdb] VCF2MAF_SOMATIC_WORKING (80)  | 86 of 86 ✔
+[91/39c165] VCF2MAF_GERMLINE_WORKING (73) | 73 of 73 ✔
+[91/cd5f83] MERGE_ALL_MAFS                | 0 of 1
+
+executor >  lsf (160)
+[f6/2acfdb] VCF2MAF_SOMATIC_WORKING (80)  | 86 of 86 ✔
+[91/39c165] VCF2MAF_GERMLINE_WORKING (73) | 73 of 73 ✔
+[91/cd5f83] MERGE_ALL_MAFS                | 1 of 1 ✔
+
+executor >  lsf (160)
+[f6/2acfdb] VCF2MAF_SOMATIC_WORKING (80)  | 86 of 86 ✔
+[91/39c165] VCF2MAF_GERMLINE_WORKING (73) | 73 of 73 ✔
+[91/cd5f83] MERGE_ALL_MAFS                | 1 of 1 ✔
+Completed at: 18-Jul-2025 14:41:20
+Duration    : 12m 3s
+CPU hours   : 0.9
+Succeeded   : 160
+
+
+=== Pipeline Completed ===
+Date: Fri Jul 18 02:41:20 PM EDT 2025
+Exit code: 0
+=== Pipeline SUCCESS! ===
+Results summary:
+Somatic MAFs: 86
+Germline MAFs: 73
+Merged MAF: 1
+Merged MAF variants: 44276
+
+
+PS:
+
+Read file <nextflow_head_196485739.err> for stderr output of this job.
+

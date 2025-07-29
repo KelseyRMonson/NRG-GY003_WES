@@ -1,0 +1,331 @@
+=== Merging All MAF Files ===
+Date: Fri Jul 18 02:40:21 PM EDT 2025
+Somatic MAF files: 86
+Germline MAF files: 73
+
+Somatic MAF files:
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GABJHS_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/49/efa4b54c94c85fef7fd19013b1740e/GABJHS_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADBKF_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/06/8a278c889cd9c833b613393d303b5f/GADBKF_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCFX_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/05/469dc44b8ff9b823d43ebe96c7d482/GADCFX_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCGA_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/3a/873e0b073ac4198d7e9cdf978fd921/GADCGA_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCGH_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/e0/0b822031b6503629e1efe5ffb0adb1/GADCGH_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCGP_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/6b/6262b064e44529fd3274032971174b/GADCGP_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCGU_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/fb/b2cfb504bd1a7eb098392d95bc19f2/GADCGU_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCHA_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/40/00363e1185208dd56cebbd730f563c/GADCHA_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCHV_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/a6/fafdf49590dffd5a7d85a9f9508387/GADCHV_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCIB_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/3f/80a635534ba7755a97d172796a4363/GADCIB_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCIC_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/64/30d57668d68dcfa8dee59c349e42b7/GADCIC_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCIR_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/49/b0e89055ce96f77954d5fd8e4109eb/GADCIR_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCJB_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/31/5022f99231a070dea2d67fe82d4a90/GADCJB_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCJG_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/e3/0b9b3ce9d12d94731da38405dd3669/GADCJG_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCJI_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/6e/56da15cff0be0bf25ea3a2aea094cb/GADCJI_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCJR_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/0e/86befdc3c83a94acaa17fe14b82fe5/GADCJR_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCJW_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/ab/2a4420a39fd710d490f4f6720c82f7/GADCJW_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCJX_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/2f/7034cbb4836ffc059b654b09fbae8a/GADCJX_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCJY_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/4a/9541f07d3482192f7ff993281287ba/GADCJY_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCKL_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/d0/66fda5aeed95c08d458de56a8cd079/GADCKL_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCKT_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/80/e740c40a9aeeb7937240af148dfcb8/GADCKT_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCKZ_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/ee/5f5763d6f5aebc70d84d4a82312c8f/GADCKZ_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCLD_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/f3/f5d86130e4608f63793c5e27814f0a/GADCLD_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCLG_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/d6/d6597a7de1d42e9605a9242fc5ecd6/GADCLG_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCLR_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/64/e6fb7ea91539cc9e6194550ed824bf/GADCLR_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCLW_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/31/f58dfda9a1370875fcab4a32bccfd4/GADCLW_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCMA_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/8c/8ce586438df81cdc95e11d3dedf81d/GADCMA_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCMD_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/fb/ed4afc82ceec32b82509644ae469b0/GADCMD_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCME_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/ad/65dbd05bf4a5351d9ea85413ce7b0d/GADCME_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCMZ_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/3f/f0ce143a32fa4169d6b663c5f326e1/GADCMZ_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCNA_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/4d/b4af94d329b2657cd968b3de55a9e5/GADCNA_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCNB_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/d4/ab00f386193aa2039ff5bea5cb18e2/GADCNB_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCNC_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/ba/b87b116d962ce1ace5ddc2001a7b2d/GADCNC_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCNJ_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/fa/a2d552bac4e71f889c8a813bccc006/GADCNJ_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCNX_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/bf/862f55aaea89e15e8b5213911db7c1/GADCNX_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCRF_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/15/a24fec2d1c457106d955a4b651fe73/GADCRF_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCRK_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/9e/8544c52f04727df5f37ac838679455/GADCRK_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCRT_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/8a/afc940ef0459a5d48404168083eb14/GADCRT_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCRU_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/92/14c6b2002b5fa52be7e46e4dd5444e/GADCRU_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADCRW_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/50/5267012019b0e27ba265f2f5312e7e/GADCRW_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADFXV_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/f7/b128d9f2194a485029e95345baab06/GADFXV_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADFXX_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/1b/585c0b4958076374e9c02a83cfcfef/GADFXX_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADFYV_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/c5/1f7b8d632fecc631c3f2e96aed4ee2/GADFYV_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADFZF_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/38/dd0b2628b217cf989dd0317d9a8bc1/GADFZF_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGAB_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/56/e286eec5c9b54ff9418fa4c9681ebd/GADGAB_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGAC_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/53/480f39cae268c28e2b89ac3b101dcd/GADGAC_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGAD_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/55/b953d476d1e98d6bedb6e74a4a7f5d/GADGAD_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGAE_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/7a/7232454253a1188864ba104cf47c20/GADGAE_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGAM_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/4b/85de8b9f5c18521141724275c6aad9/GADGAM_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGAR_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/73/cd7c7d014d6ba9020f4f938dfba26b/GADGAR_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGAW_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/a5/fda3869e144d2d2236e95bcfca636d/GADGAW_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGBF_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/06/fdcbef75c1fcc82dc16c88bb1fc5fd/GADGBF_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGBU_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/7a/80b1113c41fc54d5e49a7a1b4c8fd3/GADGBU_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGCM_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/57/cb58a702419e0dad5efb2c21f6b93e/GADGCM_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGCX_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/fa/307bf372f27558cde56bc0f3fc0b2d/GADGCX_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGDC_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/71/28c88c8f9f138411f7469a5af583bc/GADGDC_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGDE_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/18/1cc0b25cf49b8fd91132f5d4b6113b/GADGDE_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGDF_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/66/feea7487db0379856848dc35f0ab94/GADGDF_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGDG_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/52/52e24ae35ccaa3be84f4c1aa67b630/GADGDG_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGEI_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/57/c602703d8b9826204cc663ae66b00a/GADGEI_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGEM_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/29/1e09160c7920a922d0af75f38f29aa/GADGEM_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGFF_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/01/57037ae8987ac1fe3f561e339f29fe/GADGFF_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGFI_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/5e/78c5d7e7b144a02cd556a2394d0e97/GADGFI_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGFK_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/38/619524f9185291bb81199b0d59f50e/GADGFK_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGGB_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/f9/2c18c173c5435b4a592dc8fb7867fe/GADGGB_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGGC_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/5b/0cabedd718593f427fa21f16160451/GADGGC_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGGF_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/ff/72e758c83072e8dd7582587306fc0c/GADGGF_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGGJ_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/47/ebae606d70a56308acc244af956e1c/GADGGJ_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGGL_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/b8/a8843219fb7e014545ceb2057211e8/GADGGL_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGGS_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/9b/4a107c1be7c7b93d8e57918ea1961f/GADGGS_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGHG_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/7d/920511710c262b98afba310b0293a5/GADGHG_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGHK_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/41/8dd9024296d6b554a2e002f6159a3a/GADGHK_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGHL_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/f6/7ba66fe64d0390124105fe2bab1340/GADGHL_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGHS_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/9a/abd25c6fd3c9203a96820e4d30ae47/GADGHS_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGHU_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/8d/48c9e8e4457258694a538dafb35bb6/GADGHU_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGHX_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/eb/e9e47ff230b862188151869bd9487b/GADGHX_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGIH_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/87/e6328027ad2e8f72c2f4493d54146c/GADGIH_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGII_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/53/a236d8e17bcf44439208f0d2e3c745/GADGII_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGIM_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/4b/ee9d5d94e7a6267819f527f369a2d8/GADGIM_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGIN_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/f6/2acfdb3f3e2c8b31a9aacef5b831a4/GADGIN_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGIZ_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/1c/93c4f27728a6c859b3fc4313dc95ab/GADGIZ_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGJI_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/f7/fa5886924a18401f2d6b0ac9110666/GADGJI_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGJP_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/4d/c626658174656f8a67a0f99b26c4bf/GADGJP_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGJW_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/30/ffa66d9d6d5d58319067adb34846dd/GADGJW_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGKJ_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/b8/07d6b95a940ec826ec7f50c5ec4bef/GADGKJ_somatic.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 142 Jul 18 14:40 GADGMX_somatic.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/8e/124a523becfc5c038326bea5390bdd/GADGMX_somatic.maf
+
+Germline MAF files:
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GABJHS_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/fe/20b7c832b15f0d43e7e98f832cd2d4/GABJHS_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADBKF_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/a3/fbe329f396b06e84ccb1ea2d2f7996/GADBKF_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCFX_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/b7/17f73ec07e00c3e666b279eb146505/GADCFX_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCGA_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/3b/6ae278cf2665256ff488e4cf63cb00/GADCGA_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCGH_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/dd/8ddcd59e861f45e73e1a921338a23c/GADCGH_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCGP_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/e7/b689c9c55ca6689ddcceb4a1afead0/GADCGP_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCGU_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/50/5e4f434d5b66e5ca0003a326a4614a/GADCGU_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCHA_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/b1/1584a5f30321b23c56bbd53c23bd05/GADCHA_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCHV_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/4f/1ebc1c95883706eb0f894ff641766e/GADCHV_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCIB_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/08/05ec6b6312ba4932060bfdb7246b99/GADCIB_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCIC_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/df/f80d507b427e9f766aeb5701ec2d7c/GADCIC_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCIR_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/6c/23e28498f48a11ff809b324afc9db7/GADCIR_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCJB_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/06/f22715df261429f1809ad17d1f2952/GADCJB_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCJG_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/ec/1457c1493f7ef503edb99ad470aca2/GADCJG_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCJI_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/43/1286738d3833fdbc6efd490bf2dadc/GADCJI_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCJR_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/94/a0a995e11af7ad68e1611bf6e897f9/GADCJR_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCJW_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/7f/85e643dea5aaa2fa5ee7f52f30ae83/GADCJW_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCJX_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/bb/066a18c1cfd3759f1523721843f0d6/GADCJX_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCJY_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/a1/5b60938dc865cb8d2c58f754ba3349/GADCJY_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCKL_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/40/8ddd45cbbf9a12e713847f42d99df9/GADCKL_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCKT_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/cd/ab7f87a65809b7769501cb75222e32/GADCKT_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCKZ_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/b4/b156c5a58ce059867011f059e67746/GADCKZ_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCLD_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/db/e335fd58999dc5ab006b042c206e6b/GADCLD_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCLG_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/88/dae4a20791b05617f8c582706cda0d/GADCLG_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCLR_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/71/61043e9d29652e6c771d00adec411f/GADCLR_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCLW_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/c0/9d5e467047fb42d7aa76f83f2d83ea/GADCLW_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCMA_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/7d/d56ef392a54e43b90f4d405a7aacf4/GADCMA_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCMD_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/6f/560ab77240507c9fb53e18e855fb42/GADCMD_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCME_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/69/824d39fa0e7dd8b2c4116a4620ddbd/GADCME_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCMZ_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/80/2b846c22abc481b7dc2300a59087cd/GADCMZ_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCNA_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/37/098f7b12ce2ecb2883f67bd2c344dd/GADCNA_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCNB_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/c7/5bd0c371d9a9ab630c2f66a41c4a83/GADCNB_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCNJ_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/14/fc0019ddd88838d02c1c1b1187d531/GADCNJ_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCNX_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/98/abc203521cc77d8ae991abbabcca2e/GADCNX_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCRF_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/e3/2841b8fad43c0aa6873fef6831b2a9/GADCRF_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADCRK_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/7c/7d3bd1b12845c59d4db49296f33d2a/GADCRK_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADFXX_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/ea/0497dc653cdcfc46de854455c0818e/GADFXX_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADFYV_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/c5/450f61510cdca759a4864f5d62ae54/GADFYV_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADFZF_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/95/8c15806803d747876dc3cd1afda641/GADFZF_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGAB_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/2a/972f06bee1bad188af2b8ee053bc94/GADGAB_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGAC_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/81/36c2b135d6649271d98938d10d8330/GADGAC_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGAD_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/01/fb3962047fea2b82afd36cfd391652/GADGAD_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGAM_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/65/87d73d4767b060f756d18d36ad2ef2/GADGAM_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGAR_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/a3/b6d120e931b909fdd76a069f9d1dc5/GADGAR_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGAW_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/90/6a6dd34502cf60fc8e6b2e3852c8eb/GADGAW_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGBF_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/40/bd0b763cbfd3e683428b1b602861c4/GADGBF_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGBU_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/87/09971ab960fbd58e7de3432ab2e2db/GADGBU_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGCM_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/d6/4c85f33c17789981d6da0f861ac60a/GADGCM_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGCX_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/06/866273a4b26b81e59539137dd06b7b/GADGCX_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGDC_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/6c/25f192c513a5233cf77539fe981159/GADGDC_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGDF_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/56/2f410162086e54446fd5ffbc3a8f34/GADGDF_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGDG_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/7c/b1c3613a1b30782b529cb1bafbf43f/GADGDG_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGEM_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/f0/113e866d78a3490f9f45f554061e59/GADGEM_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGFF_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/87/8f5c54a6a49ccf76ba8f7a5097277f/GADGFF_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGFK_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/f5/f9ede94740fd569ddaef26869e47e6/GADGFK_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGGB_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/1f/e8c0489e8e647d909293b8c6ce210d/GADGGB_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGGC_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/2e/7635344673bd4d1003ddf64e71bce5/GADGGC_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGGF_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/e2/d54de5beebc5feeda8e21879729755/GADGGF_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGGL_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/ba/029ddb7bbcb17c9ce003c5fa3f1766/GADGGL_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGGS_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/ff/8ef697436c5a9d36ea9b742fc665fe/GADGGS_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGHG_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/8c/4d14ca71e5249585e40bb827adbf2a/GADGHG_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGHK_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/56/564991531320ed3c6059a3de51c6b7/GADGHK_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGHL_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/20/9b92f6423631f16faeed5ab7ca2439/GADGHL_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGHS_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/22/32904469bf9435a78523c7284fbda8/GADGHS_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGHX_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/6f/f2d38f4a7481f753d973a448b056a9/GADGHX_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGIH_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/df/9e33f474fde83212530f6c7b92efb0/GADGIH_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGII_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/3f/d057577294d56891f8e1f3d315b07a/GADGII_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGIM_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/e0/83497e7edabe83b229eb71042577d5/GADGIM_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGIN_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/85/91880f25cff6c5d80dc6185144727e/GADGIN_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGIZ_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/80/a602f3bae424d4ecffe6787fa3f2d9/GADGIZ_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGJI_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/60/d76160537937f8133fb3b241eacde7/GADGJI_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGKJ_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/e6/80081751271895608839ba4b58c15c/GADGKJ_germline.maf
+lrwxrwxrwx 1 monsok03 NGSCRC 143 Jul 18 14:40 GADGMX_germline.maf -> /sc/arion/projects/NGSCRC/Scripts/NRG-GY003/WES/manage_Sarek_output/vcf2maf_pipeline/work/91/39c1659bf4cd35f2f18c9d206681d9/GADGMX_germline.maf
+Creating merged MAF file...
+Adding somatic variants from: GADCFX_somatic.maf
+Adding somatic variants from: GADCGA_somatic.maf
+Adding somatic variants from: GADBKF_somatic.maf
+Adding somatic variants from: GADCGU_somatic.maf
+Adding somatic variants from: GADCGH_somatic.maf
+Adding somatic variants from: GABJHS_somatic.maf
+Adding somatic variants from: GADCGP_somatic.maf
+Adding somatic variants from: GADCHV_somatic.maf
+Adding somatic variants from: GADCIB_somatic.maf
+Adding somatic variants from: GADCIR_somatic.maf
+Adding somatic variants from: GADCJG_somatic.maf
+Adding somatic variants from: GADCIC_somatic.maf
+Adding somatic variants from: GADCJB_somatic.maf
+Adding somatic variants from: GADCJR_somatic.maf
+Adding somatic variants from: GADCJI_somatic.maf
+Adding somatic variants from: GADCJX_somatic.maf
+Adding somatic variants from: GADCHA_somatic.maf
+Adding somatic variants from: GADCJW_somatic.maf
+Adding somatic variants from: GADCJY_somatic.maf
+Adding somatic variants from: GADCKT_somatic.maf
+Adding somatic variants from: GADCKZ_somatic.maf
+Adding somatic variants from: GADCKL_somatic.maf
+Adding somatic variants from: GADCLR_somatic.maf
+Adding somatic variants from: GADCMD_somatic.maf
+Adding somatic variants from: GADCLG_somatic.maf
+Adding somatic variants from: GADCLD_somatic.maf
+Adding somatic variants from: GADCLW_somatic.maf
+Adding somatic variants from: GADCMZ_somatic.maf
+Adding somatic variants from: GADCMA_somatic.maf
+Adding somatic variants from: GADCME_somatic.maf
+Adding somatic variants from: GADCNC_somatic.maf
+Adding somatic variants from: GADCNX_somatic.maf
+Adding somatic variants from: GADCRT_somatic.maf
+Adding somatic variants from: GADCNA_somatic.maf
+Adding somatic variants from: GADCRK_somatic.maf
+Adding somatic variants from: GADCNB_somatic.maf
+Adding somatic variants from: GADCNJ_somatic.maf
+Adding somatic variants from: GADCRF_somatic.maf
+Adding somatic variants from: GADCRU_somatic.maf
+Adding somatic variants from: GADCRW_somatic.maf
+Adding somatic variants from: GADFXV_somatic.maf
+Adding somatic variants from: GADFXX_somatic.maf
+Adding somatic variants from: GADGAB_somatic.maf
+Adding somatic variants from: GADGAC_somatic.maf
+Adding somatic variants from: GADFYV_somatic.maf
+Adding somatic variants from: GADFZF_somatic.maf
+Adding somatic variants from: GADGAE_somatic.maf
+Adding somatic variants from: GADGAM_somatic.maf
+Adding somatic variants from: GADGAD_somatic.maf
+Adding somatic variants from: GADGAR_somatic.maf
+Adding somatic variants from: GADGBU_somatic.maf
+Adding somatic variants from: GADGCM_somatic.maf
+Adding somatic variants from: GADGBF_somatic.maf
+Adding somatic variants from: GADGCX_somatic.maf
+Adding somatic variants from: GADGDC_somatic.maf
+Adding somatic variants from: GADGDE_somatic.maf
+Adding somatic variants from: GADGAW_somatic.maf
+Adding somatic variants from: GADGDF_somatic.maf
+Adding somatic variants from: GADGEI_somatic.maf
+Adding somatic variants from: GADGFF_somatic.maf
+Adding somatic variants from: GADGDG_somatic.maf
+Adding somatic variants from: GADGEM_somatic.maf
+Adding somatic variants from: GADGFI_somatic.maf
+Adding somatic variants from: GADGGF_somatic.maf
+Adding somatic variants from: GADGFK_somatic.maf
+Adding somatic variants from: GADGGB_somatic.maf
+Adding somatic variants from: GADGGC_somatic.maf
+Adding somatic variants from: GADGGJ_somatic.maf
+Adding somatic variants from: GADGGS_somatic.maf
+Adding somatic variants from: GADGHK_somatic.maf
+Adding somatic variants from: GADGHL_somatic.maf
+Adding somatic variants from: GADGHS_somatic.maf
+Adding somatic variants from: GADGII_somatic.maf
+Adding somatic variants from: GADGIH_somatic.maf
+Adding somatic variants from: GADGHG_somatic.maf
+Adding somatic variants from: GADGHX_somatic.maf
+Adding somatic variants from: GADGGL_somatic.maf
+Adding somatic variants from: GADGHU_somatic.maf
+Adding somatic variants from: GADGIM_somatic.maf
+Adding somatic variants from: GADGJW_somatic.maf
+Adding somatic variants from: GADGJP_somatic.maf
+Adding somatic variants from: GADGJI_somatic.maf
+Adding somatic variants from: GADGMX_somatic.maf
+Adding somatic variants from: GADGIZ_somatic.maf
+Adding somatic variants from: GADGKJ_somatic.maf
+Adding somatic variants from: GADGIN_somatic.maf
+Adding germline variants from: GABJHS_germline.maf
+Adding germline variants from: GADCGA_germline.maf
+Adding germline variants from: GADBKF_germline.maf
+Adding germline variants from: GADCFX_germline.maf
+Adding germline variants from: GADCGH_germline.maf
+Adding germline variants from: GADCGU_germline.maf
+Adding germline variants from: GADCHA_germline.maf
+Adding germline variants from: GADCGP_germline.maf
+Adding germline variants from: GADCHV_germline.maf
+Adding germline variants from: GADCIB_germline.maf
+Adding germline variants from: GADCIR_germline.maf
+Adding germline variants from: GADCJB_germline.maf
+Adding germline variants from: GADCIC_germline.maf
+Adding germline variants from: GADCJG_germline.maf
+Adding germline variants from: GADCJI_germline.maf
+Adding germline variants from: GADCJR_germline.maf
+Adding germline variants from: GADCJW_germline.maf
+Adding germline variants from: GADCJX_germline.maf
+Adding germline variants from: GADCKL_germline.maf
+Adding germline variants from: GADCKT_germline.maf
+Adding germline variants from: GADCKZ_germline.maf
+Adding germline variants from: GADCJY_germline.maf
+Adding germline variants from: GADCLG_germline.maf
+Adding germline variants from: GADCLR_germline.maf
+Adding germline variants from: GADCLW_germline.maf
+Adding germline variants from: GADCLD_germline.maf
+Adding germline variants from: GADCMA_germline.maf
+Adding germline variants from: GADCMD_germline.maf
+Adding germline variants from: GADCMZ_germline.maf
+Adding germline variants from: GADCME_germline.maf
+Adding germline variants from: GADCNA_germline.maf
+Adding germline variants from: GADCNJ_germline.maf
+Adding germline variants from: GADCNB_germline.maf
+Adding germline variants from: GADCRF_germline.maf
+Adding germline variants from: GADCNX_germline.maf
+Adding germline variants from: GADFXX_germline.maf
+Adding germline variants from: GADCRK_germline.maf
+Adding germline variants from: GADFYV_germline.maf
+Adding germline variants from: GADFZF_germline.maf
+Adding germline variants from: GADGAB_germline.maf
+Adding germline variants from: GADGAC_germline.maf
+Adding germline variants from: GADGAM_germline.maf
+Adding germline variants from: GADGAD_germline.maf
+Adding germline variants from: GADGAW_germline.maf
+Adding germline variants from: GADGAR_germline.maf
+Adding germline variants from: GADGBF_germline.maf
+Adding germline variants from: GADGCM_germline.maf
+Adding germline variants from: GADGBU_germline.maf
+Adding germline variants from: GADGDC_germline.maf
+Adding germline variants from: GADGCX_germline.maf
+Adding germline variants from: GADGDG_germline.maf
+Adding germline variants from: GADGDF_germline.maf
+Adding germline variants from: GADGEM_germline.maf
+Adding germline variants from: GADGFF_germline.maf
+Adding germline variants from: GADGFK_germline.maf
+Adding germline variants from: GADGGB_germline.maf
+Adding germline variants from: GADGGC_germline.maf
+Adding germline variants from: GADGGL_germline.maf
+Adding germline variants from: GADGGF_germline.maf
+Adding germline variants from: GADGHG_germline.maf
+Adding germline variants from: GADGGS_germline.maf
+Adding germline variants from: GADGHK_germline.maf
+Adding germline variants from: GADGHL_germline.maf
+Adding germline variants from: GADGHS_germline.maf
+Adding germline variants from: GADGHX_germline.maf
+Adding germline variants from: GADGIH_germline.maf
+Adding germline variants from: GADGII_germline.maf
+Adding germline variants from: GADGIM_germline.maf
+Adding germline variants from: GADGIN_germline.maf
+Adding germline variants from: GADGIZ_germline.maf
+Adding germline variants from: GADGJI_germline.maf
+Adding germline variants from: GADGKJ_germline.maf
+Adding germline variants from: GADGMX_germline.maf
+
+Total variants in merged file: 44276
+Merged MAF file size: 173508589 bytes
+Merge completed: Fri Jul 18 02:40:25 PM EDT 2025

@@ -1,0 +1,80 @@
+Consensus VCF Diagnostic Log - Tue Jul  8 05:32:08 PM EDT 2025
+=======================================
+
+Starting DIAGNOSTIC consensus VCF processing
+Input CSV: /sc/arion/projects/NGSCRC/Work/Seqera/NRG-GY003_All_Varcalls/csv/variantcalled.csv
+DIAGNOSTIC: Processing patient GADCRT (sample: GADCRT-Tu-0BGROP) with SNP/indel VCFs: /sc/arion/projects/NGSCRC/Work/Seqera/NRG-GY003_All_Varcalls/variant_calling/mutect2/GADCRT/GADCRT.mutect2.filtered.vcf.gz /sc/arion/projects/NGSCRC/Work/Seqera/NRG-GY003_All_Varcalls/variant_calling/freebayes/GADCRT-Tu-0BGROP/GADCRT-Tu-0BGROP.freebayes.vcf.gz
+Processing tumor sample: GADCRT
+Original VCF files: /sc/arion/projects/NGSCRC/Work/Seqera/NRG-GY003_All_Varcalls/variant_calling/mutect2/GADCRT/GADCRT.mutect2.filtered.vcf.gz /sc/arion/projects/NGSCRC/Work/Seqera/NRG-GY003_All_Varcalls/variant_calling/freebayes/GADCRT-Tu-0BGROP/GADCRT-Tu-0BGROP.freebayes.vcf.gz
+No Strelka SNV+indel pair found for merging
+Final VCF files after Strelka merging: /sc/arion/projects/NGSCRC/Work/Seqera/NRG-GY003_All_Varcalls/variant_calling/mutect2/GADCRT/GADCRT.mutect2.filtered.vcf.gz /sc/arion/projects/NGSCRC/Work/Seqera/NRG-GY003_All_Varcalls/variant_calling/freebayes/GADCRT-Tu-0BGROP/GADCRT-Tu-0BGROP.freebayes.vcf.gz
+Number of VCF files: 2
+  /sc/arion/projects/NGSCRC/Work/Seqera/NRG-GY003_All_Varcalls/variant_calling/mutect2/GADCRT/GADCRT.mutect2.filtered.vcf.gz: 100366 variants
+  /sc/arion/projects/NGSCRC/Work/Seqera/NRG-GY003_All_Varcalls/variant_calling/freebayes/GADCRT-Tu-0BGROP/GADCRT-Tu-0BGROP.freebayes.vcf.gz: 113463 variants
+Total input variants across all SNP/indel callers: 213829
+DIAGNOSTIC: Manual overlap check between first two VCFs
+VCF1: /sc/arion/projects/NGSCRC/Work/Seqera/NRG-GY003_All_Varcalls/variant_calling/mutect2/GADCRT/GADCRT.mutect2.filtered.vcf.gz
+VCF2: /sc/arion/projects/NGSCRC/Work/Seqera/NRG-GY003_All_Varcalls/variant_calling/freebayes/GADCRT-Tu-0BGROP/GADCRT-Tu-0BGROP.freebayes.vcf.gz
+First 10 positions from VCF1:
+chr1	611378
+chr1	923421
+chr1	923640
+chr1	923658
+chr1	924024
+chr1	924310
+chr1	924321
+chr1	924533
+chr1	924555
+chr1	924758
+First 10 positions from VCF2:
+chr1	69511
+chr1	69617
+chr1	923421
+chr1	923919
+chr1	924024
+chr1	924310
+chr1	924321
+chr1	924533
+chr1	924997
+chr1	925003
+Overlap in first 20 positions: 9
+Overlapping positions:
+chr1	923421
+chr1	924024
+chr1	924310
+chr1	924321
+chr1	924533
+chr1	925036
+chr1	931131
+chr1	941119
+chr1	942335
+Index already exists for /sc/arion/projects/NGSCRC/Work/Seqera/NRG-GY003_All_Varcalls/variant_calling/mutect2/GADCRT/GADCRT.mutect2.filtered.vcf.gz
+Index already exists for /sc/arion/projects/NGSCRC/Work/Seqera/NRG-GY003_All_Varcalls/variant_calling/freebayes/GADCRT-Tu-0BGROP/GADCRT-Tu-0BGROP.freebayes.vcf.gz
+DIAGNOSTIC: Testing different bcftools isec approaches
+Test 1: bcftools isec -n=3 (exactly 3 callers)
+Variants found in exactly 3 callers: 0
+Test 2: bcftools isec -n+2 (at least 2 callers)
+Variants found in at least 2 callers: 35604
+Distribution with -n+2:
+  35604 2
+Test 3: bcftools isec without -n flag (all intersections)
+Total unique variant positions: 178225
+Distribution without -n flag:
+ 142621 1
+  35604 2
+First 10 lines of sites.txt (no -n flag):
+chr1	69511	A	G	01
+chr1	69617	G	A	01
+chr1	611378	T	C	10
+chr1	923421	A	G	11
+chr1	923640	C	T	10
+chr1	923658	C	T	10
+chr1	923919	C	T	01
+chr1	924024	C	G	11
+chr1	924310	C	G	11
+chr1	924321	C	G	11
+Completed diagnostic processing for sample: GADCRT
+---
+
+Diagnostic processing completed at: Tue Jul  8 05:32:44 PM EDT 2025
+Log file: consensus_vcf_diagnostic_log.txt

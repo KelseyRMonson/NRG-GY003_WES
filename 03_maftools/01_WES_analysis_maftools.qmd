@@ -30,17 +30,19 @@ format:
   html: 
     toc: true
     number-sections: true
-    css: style.css
     code-overflow: wrap
     
 fig-cap-location: margin
-execute: 
-  warning: false
+# execute: 
+#  warning: false
 editor: visual
 ---
 
 # Intro
+
 ```{r}
+#| warning: false
+
 # Load packages
 
 library(maftools) # For majority of maf file analysis
@@ -49,4 +51,72 @@ library("BSgenome.Hsapiens.UCSC.hg38", quietly = TRUE)
 library(NMF) # For signature calculation
 library(pheatmap) # For nice heatmaps
 library(ghibli) # For pretty colors
+```
+
+## Loading in the data
+
+Load in raw MAF file and the clinical data
+
+```{r}
+laml = read.maf(maf="input/merged_consensus_all_samples.maf", 
+                clinicalData ="input/NRG-GY00_laml_annot_2.csv",
+                rmFlags = TRUE # "FLAGS, frequently mutated genes in public exomes"
+                )
+```
+
+::: callout-tip
+Setting `rmFlags` = `TRUE` removes **FLAGs**: frequently mutated genes in public exomes
+
+Details on these genes can be found [here](https://bmcmedgenomics.biomedcentral.com/articles/10.1186/s12920-017-0309-7#MOESM1).
+:::
+
+## Subsetting datasets
+
+We have some normal samples with no matched tumor, and we may be interested in doing subtype-specific analysis.
+
+Let's subset to only tumor samples, and then create further subsetted datasets based on clinical characteristics.
+
+### Only tumor samples
+
+```{r}
+laml_tum = subsetMaf(maf = laml, clinQuery = "Tissue %in% 'Tu'")
+```
+
+### Other subsets
+
+We can also subset by tumor histology, treatment, and response.
+
+:::{.callout-note collapse="true" appearance="simple"}
+#### See other subsets
+
+```{r}
+## Comparing Serous vs others
+laml_ser = subsetMaf(maf = laml_tum, clinQuery = "celltype %in% 'Serous_Adenocarcinoma'")
+# Subsetting the other dataset to "not serous"
+`%ni%` <- Negate(`%in%`)
+laml_other = subsetMaf(maf = laml_tum, clinQuery = "celltype %ni% 'Serous_Adenocarcinoma'")
+## Comparing CB vs NCB
+laml_CB = subsetMaf(maf = laml_tum, clinQuery = "responseCB %in% 'CB'")
+laml_NCB = subsetMaf(maf = laml_tum, clinQuery = "responseCB %in% 'NCB'")
+## Subsetting by treatment to see if there are differences
+laml_nivo = subsetMaf(maf = laml_tum, clinQuery = "tx %in% 'Nivo'")
+laml_combo = subsetMaf(maf = laml_tum, clinQuery = "tx %in% 'Combo'")
+```
+:::
+
+## View the MAF file summary
+```{r}
+#Typing laml shows basic summary of MAF file.
+laml_tum
+
+# These are some more summaries you can generate
+# I'm commenting them out as they have too much info for the tables to be readable.
+# #Shows sample summary.
+# getSampleSummary(laml_tum)
+# #Shows gene summary.
+# getGeneSummary(laml_tum)
+# #shows clinical data associated with samples
+# getClinicalData(laml_tum)
+# #Shows all fields in MAF
+# getFields(laml_tum)
 ```

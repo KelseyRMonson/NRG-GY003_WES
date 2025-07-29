@@ -2,6 +2,7 @@
 annotation/
 csv/
 variant_calling/
+reports/
 
 # R files to ignore
 # History files

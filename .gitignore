@@ -1,3 +1,9 @@
+# Sarek files to ignore
+annotation/
+csv/
+variant_calling/
+
+# R files to ignore
 # History files
 .Rhistory
 .Rapp.history

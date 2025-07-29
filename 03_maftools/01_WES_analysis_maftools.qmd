@@ -58,7 +58,7 @@ library(ghibli) # For pretty colors
 Load in raw MAF file and the clinical data
 
 ```{r}
-laml = read.maf(maf="input/merged_consensus_all_samples.maf", 
+laml = read.maf(maf="input/merged_consensus_all_samples_germline.maf", 
                 clinicalData ="input/NRG-GY00_laml_annot_2.csv",
                 rmFlags = TRUE # "FLAGS, frequently mutated genes in public exomes"
                 )
@@ -78,8 +78,11 @@ Let's subset to only tumor samples, and then create further subsetted datasets b
 
 ### Only tumor samples
 
+I also annotated with pathogenic germline variants; the only relevant ones were in BRCA1 and BRCA2, so we are subsetting to somatic mutations and pathogenic germline variants.
+
 ```{r}
 laml_tum = subsetMaf(maf = laml, clinQuery = "Tissue %in% 'Tu'")
+laml_tum = subsetMaf(maf = laml_tum, query = "vcf_id %in% c('SOMATIC','GERMLINE_PATHOGENIC') ")
 ```
 
 ### Other subsets
@@ -119,4 +122,98 @@ laml_tum
 # getClinicalData(laml_tum)
 # #Shows all fields in MAF
 # getFields(laml_tum)
+```
+
+# Visualization
+## Summarize the maf file
+
+We can use `plotmafSummary` to plot the summary of the maf file, which displays number of variants in each sample as a stacked barplot and variant types as a boxplot summarized by `Variant_Classification`.
+
+```{r}
+plotmafSummary(maf = laml_tum, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
+```
+
+```{r}
+#Use mafbarplot for a minimal barplot of mutated genes.
+mafbarplot(maf =  laml_tum)
+```
+
+## Summarize the other subsets
+
+Here are the mutation distributions for the other subsets.
+
+As a sanity check, there are few TP53 mutations in the top 10 for the non-Serous samples, which makes sense.
+
+:::{.callout-note collapse="true"}
+
+### See the other subsets
+
+#### By Histology
+##### Serous
+```{r}
+## Serous 
+plotmafSummary(maf = laml_ser, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
+```
+```{r}
+mafbarplot(maf =  laml_ser)
+```
+
+##### Non-Serous
+```{r}
+## Non-serous
+plotmafSummary(maf = laml_other, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
+```
+```{r}
+mafbarplot(maf =  laml_other)
+```
+
+
+#### By Response
+##### CB
+```{r}
+## CB
+plotmafSummary(maf = laml_CB, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
+```
+```{r}
+mafbarplot(maf =  laml_CB)
+```
+
+##### NCB
+```{r}
+## NCB
+plotmafSummary(maf = laml_NCB, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
+```
+```{r}
+mafbarplot(maf =  laml_NCB)
+```
+
+#### By Treatment
+##### Nivo
+```{r}
+## Nivo
+plotmafSummary(maf = laml_nivo, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
+```
+```{r}
+mafbarplot(maf =  laml_nivo)
+```
+##### Combo
+```{r}
+## Combo
+plotmafSummary(maf = laml_combo, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
+```
+```{r}
+mafbarplot(maf =  laml_combo)
+```
+
+:::
+
+# Oncoplots
+
+```{r}
+#oncoplot for top ten mutated genes.
+oncoplot(maf = laml_tum, top = 10)
+
+# Highlight by specific attribute in MAF file
+oncoplot(maf = laml_tum, 
+         additionalFeature = c("vcf_id", "GERMLINE_PATHOGENIC"))
 ```

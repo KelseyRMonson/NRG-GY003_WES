@@ -158,6 +158,12 @@ background: #f0f3f5;
   </ul></li>
   <li><a href="#view-the-maf-file-summary" id="toc-view-the-maf-file-summary" class="nav-link" data-scroll-target="#view-the-maf-file-summary"><span class="header-section-number">1.3</span> View the MAF file summary</a></li>
   </ul></li>
+  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization"><span class="header-section-number">2</span> Visualization</a>
+  <ul class="collapse">
+  <li><a href="#summarize-the-maf-file" id="toc-summarize-the-maf-file" class="nav-link" data-scroll-target="#summarize-the-maf-file"><span class="header-section-number">2.1</span> Summarize the maf file</a></li>
+  <li><a href="#summarize-the-other-subsets" id="toc-summarize-the-other-subsets" class="nav-link" data-scroll-target="#summarize-the-other-subsets"><span class="header-section-number">2.2</span> Summarize the other subsets</a></li>
+  </ul></li>
+  <li><a href="#oncoplots" id="toc-oncoplots" class="nav-link" data-scroll-target="#oncoplots"><span class="header-section-number">3</span> Oncoplots</a></li>
   </ul>
 </nav>
 </div>
@@ -183,7 +189,7 @@ background: #f0f3f5;
 <h2 data-number="1.1" class="anchored" data-anchor-id="loading-in-the-data"><span class="header-section-number">1.1</span> Loading in the data</h2>
 <p>Load in raw MAF file and the clinical data</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>laml <span class="ot">=</span> <span class="fu">read.maf</span>(<span class="at">maf=</span><span class="st">"input/merged_consensus_all_samples.maf"</span>, </span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>laml <span class="ot">=</span> <span class="fu">read.maf</span>(<span class="at">maf=</span><span class="st">"input/merged_consensus_all_samples_germline.maf"</span>, </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">clinicalData =</span><span class="st">"input/NRG-GY00_laml_annot_2.csv"</span>,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">rmFlags =</span> <span class="cn">TRUE</span> <span class="co"># "FLAGS, frequently mutated genes in public exomes"</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -194,7 +200,7 @@ background: #f0f3f5;
 -Silent variants: 30668 
 -Summarizing
 -Processing clinical data
--Finished in 3.160s elapsed (2.980s cpu) </code></pre>
+-Finished in 3.110s elapsed (3.080s cpu) </code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -218,6 +224,7 @@ Tip
 <p>Let’s subset to only tumor samples, and then create further subsetted datasets based on clinical characteristics.</p>
 <section id="only-tumor-samples" class="level3" data-number="1.2.1">
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="only-tumor-samples"><span class="header-section-number">1.2.1</span> Only tumor samples</h3>
+<p>I also annotated with pathogenic germline variants; the only relevant ones were in BRCA1 and BRCA2, so we are subsetting to somatic mutations and pathogenic germline variants.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>laml_tum <span class="ot">=</span> <span class="fu">subsetMaf</span>(<span class="at">maf =</span> laml, <span class="at">clinQuery =</span> <span class="st">"Tissue %in% 'Tu'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -226,6 +233,10 @@ Tip
 <div class="cell-output cell-output-stderr">
 <pre><code>--86 samples meet the clinical query</code></pre>
 </div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-Processing clinical data</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>laml_tum <span class="ot">=</span> <span class="fu">subsetMaf</span>(<span class="at">maf =</span> laml_tum, <span class="at">query =</span> <span class="st">"vcf_id %in% c('SOMATIC','GERMLINE_PATHOGENIC') "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>-Processing clinical data</code></pre>
 </div>
@@ -247,8 +258,8 @@ See other subsets
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Comparing Serous vs others</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>laml_ser <span class="ot">=</span> <span class="fu">subsetMaf</span>(<span class="at">maf =</span> laml_tum, <span class="at">clinQuery =</span> <span class="st">"celltype %in% 'Serous_Adenocarcinoma'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Comparing Serous vs others</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>laml_ser <span class="ot">=</span> <span class="fu">subsetMaf</span>(<span class="at">maf =</span> laml_tum, <span class="at">clinQuery =</span> <span class="st">"celltype %in% 'Serous_Adenocarcinoma'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>-subsetting by clinical data..</code></pre>
 </div>
@@ -258,9 +269,9 @@ See other subsets
 <div class="cell-output cell-output-stdout">
 <pre><code>-Processing clinical data</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subsetting the other dataset to "not serous"</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">%ni%</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">Negate</span>(<span class="st">`</span><span class="at">%in%</span><span class="st">`</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>laml_other <span class="ot">=</span> <span class="fu">subsetMaf</span>(<span class="at">maf =</span> laml_tum, <span class="at">clinQuery =</span> <span class="st">"celltype %ni% 'Serous_Adenocarcinoma'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subsetting the other dataset to "not serous"</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">%ni%</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">Negate</span>(<span class="st">`</span><span class="at">%in%</span><span class="st">`</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>laml_other <span class="ot">=</span> <span class="fu">subsetMaf</span>(<span class="at">maf =</span> laml_tum, <span class="at">clinQuery =</span> <span class="st">"celltype %ni% 'Serous_Adenocarcinoma'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>-subsetting by clinical data..</code></pre>
 </div>
@@ -270,8 +281,8 @@ See other subsets
 <div class="cell-output cell-output-stdout">
 <pre><code>-Processing clinical data</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Comparing CB vs NCB</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>laml_CB <span class="ot">=</span> <span class="fu">subsetMaf</span>(<span class="at">maf =</span> laml_tum, <span class="at">clinQuery =</span> <span class="st">"responseCB %in% 'CB'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Comparing CB vs NCB</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>laml_CB <span class="ot">=</span> <span class="fu">subsetMaf</span>(<span class="at">maf =</span> laml_tum, <span class="at">clinQuery =</span> <span class="st">"responseCB %in% 'CB'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>-subsetting by clinical data..</code></pre>
 </div>
@@ -281,7 +292,7 @@ See other subsets
 <div class="cell-output cell-output-stdout">
 <pre><code>-Processing clinical data</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>laml_NCB <span class="ot">=</span> <span class="fu">subsetMaf</span>(<span class="at">maf =</span> laml_tum, <span class="at">clinQuery =</span> <span class="st">"responseCB %in% 'NCB'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>laml_NCB <span class="ot">=</span> <span class="fu">subsetMaf</span>(<span class="at">maf =</span> laml_tum, <span class="at">clinQuery =</span> <span class="st">"responseCB %in% 'NCB'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>-subsetting by clinical data..</code></pre>
 </div>
@@ -291,8 +302,8 @@ See other subsets
 <div class="cell-output cell-output-stdout">
 <pre><code>-Processing clinical data</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Subsetting by treatment to see if there are differences</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>laml_nivo <span class="ot">=</span> <span class="fu">subsetMaf</span>(<span class="at">maf =</span> laml_tum, <span class="at">clinQuery =</span> <span class="st">"tx %in% 'Nivo'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Subsetting by treatment to see if there are differences</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>laml_nivo <span class="ot">=</span> <span class="fu">subsetMaf</span>(<span class="at">maf =</span> laml_tum, <span class="at">clinQuery =</span> <span class="st">"tx %in% 'Nivo'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>-subsetting by clinical data..</code></pre>
 </div>
@@ -302,7 +313,7 @@ See other subsets
 <div class="cell-output cell-output-stdout">
 <pre><code>-Processing clinical data</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>laml_combo <span class="ot">=</span> <span class="fu">subsetMaf</span>(<span class="at">maf =</span> laml_tum, <span class="at">clinQuery =</span> <span class="st">"tx %in% 'Combo'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>laml_combo <span class="ot">=</span> <span class="fu">subsetMaf</span>(<span class="at">maf =</span> laml_tum, <span class="at">clinQuery =</span> <span class="st">"tx %in% 'Combo'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>-subsetting by clinical data..</code></pre>
 </div>
@@ -321,8 +332,8 @@ See other subsets
 <section id="view-the-maf-file-summary" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="view-the-maf-file-summary"><span class="header-section-number">1.3</span> View the MAF file summary</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Typing laml shows basic summary of MAF file.</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>laml_tum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Typing laml shows basic summary of MAF file.</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>laml_tum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>An object of class  MAF 
                         ID summary    Mean Median
@@ -330,30 +341,260 @@ See other subsets
  1:             NCBI_Build  GRCh38      NA     NA
  2:                 Center       .      NA     NA
  3:                Samples      86      NA     NA
- 4:                 nGenes    7762      NA     NA
- 5:        Frame_Shift_Del     975  11.337   11.5
- 6:        Frame_Shift_Ins     361   4.198    4.0
+ 4:                 nGenes    6897      NA     NA
+ 5:        Frame_Shift_Del     234   2.721    2.0
+ 6:        Frame_Shift_Ins      43   0.500    0.0
  7:           In_Frame_Del      83   0.965    0.0
  8:           In_Frame_Ins       6   0.070    0.0
- 9:      Missense_Mutation    9201 106.988   81.0
-10:      Nonsense_Mutation    1379  16.035   16.0
-11:       Nonstop_Mutation      43   0.500    0.0
-12:            Splice_Site    1055  12.267   11.0
-13: Translation_Start_Site      84   0.977    1.0
-14:                  total   13187 153.337  120.5</code></pre>
+ 9:      Missense_Mutation    9193 106.895   81.0
+10:      Nonsense_Mutation     524   6.093    4.0
+11:       Nonstop_Mutation      13   0.151    0.0
+12:            Splice_Site     505   5.872    3.0
+13: Translation_Start_Site      19   0.221    0.0
+14:                  total   10620 123.488   92.5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># These are some more summaries you can generate</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># I'm commenting them out as they have too much info for the tables to be readable.</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># #Shows sample summary.</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># getSampleSummary(laml_tum)</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co"># #Shows gene summary.</span></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co"># getGeneSummary(laml_tum)</span></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co"># #shows clinical data associated with samples</span></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co"># getClinicalData(laml_tum)</span></span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co"># #Shows all fields in MAF</span></span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="co"># getFields(laml_tum)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># These are some more summaries you can generate</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># I'm commenting them out as they have too much info for the tables to be readable.</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># #Shows sample summary.</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># getSampleSummary(laml_tum)</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co"># #Shows gene summary.</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co"># getGeneSummary(laml_tum)</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co"># #shows clinical data associated with samples</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="co"># getClinicalData(laml_tum)</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="co"># #Shows all fields in MAF</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="co"># getFields(laml_tum)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+</section>
+<section id="visualization" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Visualization</h1>
+<section id="summarize-the-maf-file" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="summarize-the-maf-file"><span class="header-section-number">2.1</span> Summarize the maf file</h2>
+<p>We can use <code>plotmafSummary</code> to plot the summary of the maf file, which displays number of variants in each sample as a stacked barplot and variant types as a boxplot summarized by <code>Variant_Classification</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmafSummary</span>(<span class="at">maf =</span> laml_tum, <span class="at">rmOutlier =</span> <span class="cn">TRUE</span>, <span class="at">addStat =</span> <span class="st">'median'</span>, <span class="at">dashboard =</span> <span class="cn">TRUE</span>, <span class="at">titvRaw =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_WES_analysis_maftools_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Use mafbarplot for a minimal barplot of mutated genes.</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mafbarplot</span>(<span class="at">maf =</span>  laml_tum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_WES_analysis_maftools_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="summarize-the-other-subsets" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="summarize-the-other-subsets"><span class="header-section-number">2.2</span> Summarize the other subsets</h2>
+<p>Here are the mutation distributions for the other subsets.</p>
+<p>As a sanity check, there are few TP53 mutations in the top 10 for the non-Serous samples, which makes sense.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+See the other subsets
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<section id="by-histology" class="level4" data-number="2.2.0.1">
+<h4 data-number="2.2.0.1" class="anchored" data-anchor-id="by-histology"><span class="header-section-number">2.2.0.1</span> By Histology</h4>
+<section id="serous" class="level5" data-number="2.2.0.1.1">
+<h5 data-number="2.2.0.1.1" class="anchored" data-anchor-id="serous"><span class="header-section-number">2.2.0.1.1</span> Serous</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Serous </span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmafSummary</span>(<span class="at">maf =</span> laml_ser, <span class="at">rmOutlier =</span> <span class="cn">TRUE</span>, <span class="at">addStat =</span> <span class="st">'median'</span>, <span class="at">dashboard =</span> <span class="cn">TRUE</span>, <span class="at">titvRaw =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_WES_analysis_maftools_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mafbarplot</span>(<span class="at">maf =</span>  laml_ser)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_WES_analysis_maftools_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="non-serous" class="level5" data-number="2.2.0.1.2">
+<h5 data-number="2.2.0.1.2" class="anchored" data-anchor-id="non-serous"><span class="header-section-number">2.2.0.1.2</span> Non-Serous</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Non-serous</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmafSummary</span>(<span class="at">maf =</span> laml_other, <span class="at">rmOutlier =</span> <span class="cn">TRUE</span>, <span class="at">addStat =</span> <span class="st">'median'</span>, <span class="at">dashboard =</span> <span class="cn">TRUE</span>, <span class="at">titvRaw =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_WES_analysis_maftools_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mafbarplot</span>(<span class="at">maf =</span>  laml_other)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_WES_analysis_maftools_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="by-response" class="level4" data-number="2.2.0.2">
+<h4 data-number="2.2.0.2" class="anchored" data-anchor-id="by-response"><span class="header-section-number">2.2.0.2</span> By Response</h4>
+<section id="cb" class="level5" data-number="2.2.0.2.1">
+<h5 data-number="2.2.0.2.1" class="anchored" data-anchor-id="cb"><span class="header-section-number">2.2.0.2.1</span> CB</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="do">## CB</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmafSummary</span>(<span class="at">maf =</span> laml_CB, <span class="at">rmOutlier =</span> <span class="cn">TRUE</span>, <span class="at">addStat =</span> <span class="st">'median'</span>, <span class="at">dashboard =</span> <span class="cn">TRUE</span>, <span class="at">titvRaw =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_WES_analysis_maftools_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mafbarplot</span>(<span class="at">maf =</span>  laml_CB)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_WES_analysis_maftools_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="ncb" class="level5" data-number="2.2.0.2.2">
+<h5 data-number="2.2.0.2.2" class="anchored" data-anchor-id="ncb"><span class="header-section-number">2.2.0.2.2</span> NCB</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="do">## NCB</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmafSummary</span>(<span class="at">maf =</span> laml_NCB, <span class="at">rmOutlier =</span> <span class="cn">TRUE</span>, <span class="at">addStat =</span> <span class="st">'median'</span>, <span class="at">dashboard =</span> <span class="cn">TRUE</span>, <span class="at">titvRaw =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_WES_analysis_maftools_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mafbarplot</span>(<span class="at">maf =</span>  laml_NCB)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_WES_analysis_maftools_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="by-treatment" class="level4" data-number="2.2.0.3">
+<h4 data-number="2.2.0.3" class="anchored" data-anchor-id="by-treatment"><span class="header-section-number">2.2.0.3</span> By Treatment</h4>
+<section id="nivo" class="level5" data-number="2.2.0.3.1">
+<h5 data-number="2.2.0.3.1" class="anchored" data-anchor-id="nivo"><span class="header-section-number">2.2.0.3.1</span> Nivo</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Nivo</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmafSummary</span>(<span class="at">maf =</span> laml_nivo, <span class="at">rmOutlier =</span> <span class="cn">TRUE</span>, <span class="at">addStat =</span> <span class="st">'median'</span>, <span class="at">dashboard =</span> <span class="cn">TRUE</span>, <span class="at">titvRaw =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_WES_analysis_maftools_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mafbarplot</span>(<span class="at">maf =</span>  laml_nivo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_WES_analysis_maftools_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="combo" class="level5" data-number="2.2.0.3.2">
+<h5 data-number="2.2.0.3.2" class="anchored" data-anchor-id="combo"><span class="header-section-number">2.2.0.3.2</span> Combo</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Combo</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmafSummary</span>(<span class="at">maf =</span> laml_combo, <span class="at">rmOutlier =</span> <span class="cn">TRUE</span>, <span class="at">addStat =</span> <span class="st">'median'</span>, <span class="at">dashboard =</span> <span class="cn">TRUE</span>, <span class="at">titvRaw =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_WES_analysis_maftools_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mafbarplot</span>(<span class="at">maf =</span>  laml_combo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_WES_analysis_maftools_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="oncoplots" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Oncoplots</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">#oncoplot for top ten mutated genes.</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">oncoplot</span>(<span class="at">maf =</span> laml_tum, <span class="at">top =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_WES_analysis_maftools_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Highlight by specific attribute in MAF file</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">oncoplot</span>(<span class="at">maf =</span> laml_tum, </span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">additionalFeature =</span> <span class="fu">c</span>(<span class="st">"vcf_id"</span>, <span class="st">"GERMLINE_PATHOGENIC"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in oncoplot(maf = laml_tum, additionalFeature = c("vcf_id",
+"GERMLINE_PATHOGENIC")): No samples are enriched for GERMLINE_PATHOGENIC in
+vcf_id</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_WES_analysis_maftools_files/figure-html/unnamed-chunk-20-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 
 </main>

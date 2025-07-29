@@ -1,0 +1,52 @@
+---
+title: "NRG-GY003 WES Analysis"
+subtitle: "Whole Exome genomic analysis of NRG-GY003 ovarian cancer tumors"
+description: "Test"
+
+author:
+  - name: Kelsey Monson
+    degrees:
+      - PhD
+      - MS
+    orcid: 0000-0003-1093-8628
+    email: kelsey.monson@mssm.edu
+    affiliations:
+      - ref: ISMMS
+
+affiliations:
+  - id: ISMMS
+    name: Icahn School of Medicine at Mount Sinai
+    city: New York
+    state: NY
+    department: Immunology and Immunotherapy
+
+title-block-banner: "#f0f3f5"
+title-block-banner-color: "black"
+
+keywords: "R, Data Analysis, Data Viz"
+date: today
+
+format: 
+  html: 
+    toc: true
+    number-sections: true
+    css: style.css
+    code-overflow: wrap
+    
+fig-cap-location: margin
+execute: 
+  warning: false
+editor: visual
+---
+
+# Intro
+```{r}
+# Load packages
+
+library(maftools) # For majority of maf file analysis
+library(mclust)
+library("BSgenome.Hsapiens.UCSC.hg38", quietly = TRUE)
+library(NMF) # For signature calculation
+library(pheatmap) # For nice heatmaps
+library(ghibli) # For pretty colors
+```

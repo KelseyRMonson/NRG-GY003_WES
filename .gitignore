@@ -4,6 +4,7 @@ csv/
 variant_calling/
 reports/
 multiqc/multiqc_data/
+multiqc/multiqc_data/*.json
 
 # R files to ignore
 # History files

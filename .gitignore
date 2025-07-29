@@ -59,3 +59,4 @@ rsconnect/
 02_vcf2maf/vcf2maf_pipeline/final_results/merged_consensus_all_samples.maf
 03_maftools/input/merged_consensus_all_samples.maf
 03_maftools/output/laml_tum_summary/laml_tum_maftools.maf
+03_maftools/input/merged_consensus_all_samples_germline.maf

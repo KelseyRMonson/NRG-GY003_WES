@@ -316,24 +316,48 @@ oncoplot(maf = laml_tum, clinicalFeatures = c('Site2','Site'), sortByAnnotation 
 
 ```
 
-### Oncogenic signalling pathways
+## Oncogenic signalling pathways
 
 ```{r}
+#| fig.width: 9
+#| fig.height: 8
+#| warning: false
+
 # Plot genes in top oncogenic signalling pathways
 oncoplot(maf = laml_tum, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 2)
-# Collapse pathways
-# oncoplot(maf = laml_tum, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 5, collapsePathway = TRUE)
-# oncoplot(maf = laml_tum, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 8, collapsePathway = TRUE, 
-#          clinicalFeatures = 'Signature', sortByAnnotation = TRUE)
-# oncoplot(maf = laml_tum, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 5, collapsePathway = TRUE, 
-#          clinicalFeatures = 'responseCB', sortByAnnotation = TRUE)
-# oncoplot(maf = laml_tum, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 5, collapsePathway = TRUE, 
-#          clinicalFeatures = c("responseCB","tx"), sortByAnnotation = TRUE)
-# # Serous and other
-# oncoplot(maf = laml_ser, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 5, collapsePathway = TRUE)
-# oncoplot(maf = laml_other, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 5, collapsePathway = TRUE,
-#          clinicalFeatures = 'celltype')
+```
 
+```{r}
+#| fig.width: 9
+#| warning: false
+
+# Collapse pathways
+oncoplot(maf = laml_tum, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 5, 
+         collapsePathway = TRUE)
+```
+
+Pathways by clinical features
+```{r}
+#| fig.width: 9
+#| warning: false
+
+# Response
+oncoplot(maf = laml_tum, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 5, 
+         collapsePathway = TRUE,
+         clinicalFeatures = 'responseCB', sortByAnnotation = TRUE)
+
+oncoplot(maf = laml_tum, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 5, 
+         collapsePathway = TRUE,
+         clinicalFeatures = 'response_tx', sortByAnnotation = TRUE)
+
+
+# Histology
+oncoplot(maf = laml_ser, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 5, 
+         collapsePathway = TRUE,
+         clinicalFeatures = 'celltype')
+oncoplot(maf = laml_other, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 5, 
+         collapsePathway = TRUE,
+         clinicalFeatures = 'celltype')
 ```
 
 ```{r}

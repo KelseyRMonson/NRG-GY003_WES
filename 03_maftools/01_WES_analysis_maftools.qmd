@@ -29,7 +29,6 @@ date: today
 format: 
   html: 
     toc: true
-    number-sections: true
     code-overflow: wrap
     embed-resources: true
     
@@ -316,14 +315,15 @@ oncoplot(maf = laml_tum, clinicalFeatures = c('Site2','Site'), sortByAnnotation 
 
 ```
 
-## Oncogenic signalling pathways
+## Oncogenic signaling pathways
+`sigpw` plots enrichment for known oncogenic signaling pathways as defined in TCGA, [Sanchez/Vega et al](https://pubmed.ncbi.nlm.nih.gov/29625050/).
 
 ```{r}
 #| fig.width: 9
 #| fig.height: 8
 #| warning: false
 
-# Plot genes in top oncogenic signalling pathways
+# Plot genes in 2 top oncogenic signaling pathways
 oncoplot(maf = laml_tum, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 2)
 ```
 
@@ -331,12 +331,13 @@ oncoplot(maf = laml_tum, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPa
 #| fig.width: 9
 #| warning: false
 
-# Collapse pathways
+# Collapse to just plot the pathways, now top 5
 oncoplot(maf = laml_tum, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 5, 
          collapsePathway = TRUE)
 ```
 
-Pathways by clinical features
+### Pathways by Response
+
 ```{r}
 #| fig.width: 9
 #| warning: false
@@ -346,95 +347,180 @@ oncoplot(maf = laml_tum, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPa
          collapsePathway = TRUE,
          clinicalFeatures = 'responseCB', sortByAnnotation = TRUE)
 
+# Response by treatment
 oncoplot(maf = laml_tum, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 5, 
          collapsePathway = TRUE,
          clinicalFeatures = 'response_tx', sortByAnnotation = TRUE)
+```
 
+### Pathways by Histology
+Since these are the top pathways for the whole cohort, they may be masking histologically-specific pathways. 
 
-# Histology
+This is where it is useful to subset the data. Here I am plotting the top pathways for serous and all non-serous patients separately. 
+```{r}
+#| fig.width: 9
+#| warning: false
+
+# Serous
 oncoplot(maf = laml_ser, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 5, 
          collapsePathway = TRUE,
          clinicalFeatures = 'celltype')
+# Non-serous 
 oncoplot(maf = laml_other, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 5, 
          collapsePathway = TRUE,
          clinicalFeatures = 'celltype')
 ```
 
+## Biological processes of known tumor drivers
+`smgbp` plots enrichment for pan-cancer significantly mutated genes, classified by biological processes, per [Bailey et al](https://pubmed.ncbi.nlm.nih.gov/29625053/).
+
+Here are the top 2 biological processes of known drivers
 ```{r}
-# Biological processes of known drivers
+#| fig.width: 9
+#| fig.height: 8
+#| warning: false
+
+# Note that I have highlighted the BRCA1/2 germline variants
 oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.8, topPathways = 2, 
          additionalFeature = c("vcf_id", "GERMLINE_PATHOGENIC"))
-# oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.8, topPathways = 2,
-#          clinicalFeatures = 'responseCB', sortByAnnotation = TRUE, 
-#          additionalFeature = c("vcf_id", "GERMLINE_PATHOGENIC"))
-# 
-# oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.8, topPathways = 2,
-#          clinicalFeatures = c('response2'), sortByAnnotation = TRUE, 
-#          additionalFeature = c("vcf_id", "GERMLINE_PATHOGENIC"))
-# 
-# oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 5, collapsePathway = TRUE)
-# oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 5, collapsePathway = TRUE,
-#          clinicalFeatures = 'Signature', sortByAnnotation = TRUE)
-# oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 10, collapsePathway = TRUE)
-# oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 10, collapsePathway = TRUE,
-#          clinicalFeatures = 'Signature', sortByAnnotation = TRUE)
-# oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 10, collapsePathway = TRUE,
-#          clinicalFeatures = 'responseCB', sortByAnnotation = TRUE)
-# oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 10, collapsePathway = TRUE,
-#          clinicalFeatures = 'response2', sortByAnnotation = TRUE)
-# oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 10, collapsePathway = TRUE,
-#          clinicalFeatures = 'celltype', sortByAnnotation = TRUE)
-# 
-# oncoplot(maf = laml_ser, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 10, collapsePathway = TRUE)
-# oncoplot(maf = laml_other, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 10, collapsePathway = TRUE,
-#          clinicalFeatures = 'celltype')
+
+```
+
+### Pathways by Response & Histology
+```{r}
+#| fig.width: 9
+#| fig.height: 8
+#| warning: false
+
+# Response
+oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.8, topPathways = 2,
+         clinicalFeatures = 'responseCB', sortByAnnotation = TRUE,
+         additionalFeature = c("vcf_id", "GERMLINE_PATHOGENIC"))
+
+# Detailed response (note that none of the germline variants had CR or PR)
+oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.8, topPathways = 2,
+         clinicalFeatures = 'response2', sortByAnnotation = TRUE,
+         additionalFeature = c("vcf_id", "GERMLINE_PATHOGENIC"))
+
+# Response by treatment 
+oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.8, topPathways = 2,
+         clinicalFeatures = 'response_tx', sortByAnnotation = TRUE,
+         additionalFeature = c("vcf_id", "GERMLINE_PATHOGENIC"))
+
+# Histology
+oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.8, topPathways = 2,
+         clinicalFeatures = 'celltype', sortByAnnotation = TRUE,
+         additionalFeature = c("vcf_id", "GERMLINE_PATHOGENIC"))
+
+```
+
+### Pathways by mutational signature*
+*Will need to return to this, but it seems like sig1 is more BRCA1 while sig2 is more BRCA2.
+```{r}
+#| fig.width: 9
+#| fig.height: 8
+#| warning: false
+
+oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.8, topPathways = 2,
+         clinicalFeatures = 'Signature', sortByAnnotation = TRUE,
+         additionalFeature = c("vcf_id", "GERMLINE_PATHOGENIC"))
+```
+
+### Top pathways
+
+Now plotting the pathways
+```{r}
+#| fig.width: 9
+#| warning: false
+
+# Top 5 pathways 
+oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 5, 
+         collapsePathway = TRUE)
+
+# Top 10 pathways*
+# *I've set `topPathways` = 10 but this is like 24 pathways, not sure what's going on there...
+oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 10, 
+         collapsePathway = TRUE)
+
+# By response
+oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 10, 
+         collapsePathway = TRUE,
+         clinicalFeatures = 'responseCB', sortByAnnotation = TRUE)
+
+# By response and treatment
+oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 10, 
+         collapsePathway = TRUE,
+         clinicalFeatures = 'response_tx', sortByAnnotation = TRUE)
+
+# By histology
+oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 10, 
+         collapsePathway = TRUE,
+         clinicalFeatures = 'celltype', sortByAnnotation = TRUE)
+
+```
+
+### Top pathways by histology
+As with the oncogenic signaling pathways, I am plotting these separately for serous and non-serous.
+```{r}
+#| fig.width: 9
+#| warning: false
+
+# Serous
+oncoplot(maf = laml_ser, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 10, 
+         collapsePathway = TRUE,
+         clinicalFeatures = 'celltype')
+
+# Non-serous
+oncoplot(maf = laml_other, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 10,
+         collapsePathway = TRUE,
+         clinicalFeatures = 'celltype')
+```
+
+## A few more complete annotations
+
+```{r}
+#| warning: false
+#| code-fold: true
+
+## Color coding
+ghibli_colors <- ghibli_palette("PonyoMedium", type = "discrete")
+# ghibli_colors
+respcolors <- c("#278B9AFF","#E75B64FF")
+names(respcolors) = c("CB","NCB")
+fabcolors = RColorBrewer::brewer.pal(n = 5,name = 'Spectral')
+names(fabcolors) = c("CR", "PR", "SD_CB", "SD_NCB", "PD")
+txcolors = c("#BEAED4","#7FC97F")
+names(txcolors) = c("Nivo","Combo")
+cellcolors = RColorBrewer::brewer.pal(n = 6,name = 'PRGn')
+names(cellcolors) = c("Serous_Adenocarcinoma","Endometrioid_Adenocarcinoma","Adenocarcinoma",
+                      "Clear_Cell","Mixed_Epithelial","Undifferentiated_Carcinoma")
+
+
+anno_cols = list(tx = txcolors, response2 = fabcolors, Survtime = "Blues", celltype = cellcolors)
 
 ```
 
 ```{r}
-# ## Color coding
-# ghibli_colors <- ghibli_palette("PonyoMedium", type = "discrete")
-# ghibli_colors
-# respcolors <- c("#278B9AFF","#E75B64FF")
-# names(respcolors) = c("CB","NCB")
-# fabcolors = RColorBrewer::brewer.pal(n = 5,name = 'Spectral')
-# names(fabcolors) = c("CR", "PR", "SD_CB", "SD_NCB", "PD")
-# txcolors = c("#BEAED4","#7FC97F")
-# names(txcolors) = c("Nivo","Combo")
-# cellcolors = RColorBrewer::brewer.pal(n = 6,name = 'PRGn')
-# names(cellcolors) = c("Serous_Adenocarcinoma","Endometrioid_Adenocarcinoma","Adenocarcinoma",
-#                       "Clear_Cell","Mixed_Epithelial","Undifferentiated_Carcinoma")
-# 
-# sample_order = read.csv("sampleorder.csv",header=F)
-# sample_order <- as.matrix(sample_order)
-# 
-#   #For continuous numrical annotations, use one of the below palettes 
-# # c("Blues", "BuGn", "BuPu", "GnBu", "Greens", "Greys", "Oranges", "OrRd", "PuBu", "PuBuGn", "PuRd", "Purples", "RdPu", "Reds","YlGn", "YlGnBu", "YlOrBr", "YlOrRd")
-# 
-# anno_cols = list(tx = txcolors, response2 = fabcolors, Survtime = "Blues", celltype = cellcolors)
-# 
-# print(anno_cols)
-# 
-# oncoplot(
-#   maf = laml_tum, 
-#   clinicalFeatures = c('response2','tx',  'Survtime','celltype'),
-#   sortByAnnotation = TRUE,
-#   annotationColor = anno_cols
-# )
-# 
-# ## For AACR Poster
-# # Genome integrity pathway, response, cell type, survival time
-# anno_cols2 = list(tx = txcolors, responseCB = respcolors, Survtime = "Blues", celltype = cellcolors)
-# 
-# print(anno_cols2)
-# 
-# oncoplot(
-#   maf = laml_tum, 
-#   clinicalFeatures = c('responseCB','tx','Survtime','celltype'),
-#   sortByAnnotation = TRUE,
-#   annotationColor = anno_cols2,
-#   drawColBar = FALSE,
-#   pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 1, 
-#   additionalFeature = c("IMPACT", "HIGH")
-#)
+#| fig.width: 9
+#| fig.height: 9
+#| warning: false
+
+oncoplot(
+  maf = laml_tum,
+  clinicalFeatures = c('response2','tx',  'Survtime','celltype'),
+  sortByAnnotation = TRUE,
+  annotationColor = anno_cols
+)
+
+anno_cols2 = list(tx = txcolors, responseCB = respcolors, Survtime = "Blues", celltype = cellcolors)
+#print(anno_cols2)
+
+oncoplot(
+  maf = laml_tum,
+  clinicalFeatures = c('responseCB','tx','Survtime','celltype'),
+  sortByAnnotation = TRUE,
+  annotationColor = anno_cols2,
+  pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 2,
+  additionalFeature = c("vcf_id", "GERMLINE_PATHOGENIC")
+)
 ```

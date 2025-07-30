@@ -31,6 +31,7 @@ format:
     toc: true
     number-sections: true
     code-overflow: wrap
+    embed-resources: true
     
 fig-cap-location: margin
 # execute: 
@@ -65,10 +66,39 @@ laml = read.maf(maf="input/merged_consensus_all_samples_germline.maf",
 ```
 
 ::: callout-tip
-Setting `rmFlags` = `TRUE` removes **FLAGs**: frequently mutated genes in public exomes
+Setting `rmFlags` = `TRUE` removes frequently mutated genes in public exomes
 
 Details on these genes can be found [here](https://bmcmedgenomics.biomedcentral.com/articles/10.1186/s12920-017-0309-7#MOESM1).
 :::
+
+```{r}
+#| code-fold: true
+#| code-summary: "Setting levels for factor variables"
+
+# RECIST response (CR, PR, SD, PD)
+laml@clinical.data$response <- factor(laml@clinical.data$response, levels=c("CR","PR","SD","PD"))
+#table(laml@clinical.data$response)
+
+# Detailed response including durable and progressive SD
+laml@clinical.data$response2 <- factor(laml@clinical.data$response2, levels=c("CR","PR","SD_CB","SD_NCB","PD"))
+# table(laml@clinical.data$response2)
+
+# Response by treatment
+laml@clinical.data$response_tx <- factor(laml@clinical.data$response_tx, levels=c("Nivo_CB","Combo_CB","Nivo_NCB","Combo_NCB"))
+#table(laml@clinical.data$response_tx)
+
+# Race (White, Non-White, and Not Reported)
+laml@clinical.data$race2 <- factor(laml@clinical.data$race2, levels=c("W","NW","NR"))
+#table(laml@clinical.data$race2)
+
+# Site (dichotomous)
+laml@clinical.data$Site2 <- factor(laml@clinical.data$Site2, levels=c("Adnexa","Non_Adnexa"))
+#table(laml@clinical.data$Site2)
+
+# Primary/Met
+laml@clinical.data$Primary_Met <- factor(laml@clinical.data$Primary_Met, levels=c("P","M"))
+#table(laml@clinical.data$Primary_Met)
+```
 
 ## Subsetting datasets
 
@@ -89,7 +119,7 @@ laml_tum = subsetMaf(maf = laml_tum, query = "vcf_id %in% c('SOMATIC','GERMLINE_
 
 We can also subset by tumor histology, treatment, and response.
 
-:::{.callout-note collapse="true" appearance="simple"}
+::: {.callout-note collapse="true" appearance="simple"}
 #### See other subsets
 
 ```{r}
@@ -102,29 +132,41 @@ laml_other = subsetMaf(maf = laml_tum, clinQuery = "celltype %ni% 'Serous_Adenoc
 laml_CB = subsetMaf(maf = laml_tum, clinQuery = "responseCB %in% 'CB'")
 laml_NCB = subsetMaf(maf = laml_tum, clinQuery = "responseCB %in% 'NCB'")
 ## Subsetting by treatment to see if there are differences
+### There shouldn't be any, since treatment assignment was randomized, but is is good to confirm.
 laml_nivo = subsetMaf(maf = laml_tum, clinQuery = "tx %in% 'Nivo'")
 laml_combo = subsetMaf(maf = laml_tum, clinQuery = "tx %in% 'Combo'")
 ```
 :::
 
 ## View the MAF file summary
-```{r}
-#Typing laml shows basic summary of MAF file.
-laml_tum
 
-# These are some more summaries you can generate
+Here is a basic summary of the MAF file
+
+```{r}
+laml_tum
+```
+
+```{r}
+#| code-fold: true
+#| code-summary: "These are some more summaries you can generate"
 # I'm commenting them out as they have too much info for the tables to be readable.
+
 # #Shows sample summary.
 # getSampleSummary(laml_tum)
+
 # #Shows gene summary.
 # getGeneSummary(laml_tum)
+
 # #shows clinical data associated with samples
 # getClinicalData(laml_tum)
+
 # #Shows all fields in MAF
 # getFields(laml_tum)
+
 ```
 
 # Visualization
+
 ## Summarize the maf file
 
 We can use `plotmafSummary` to plot the summary of the maf file, which displays number of variants in each sample as a stacked barplot and variant types as a boxplot summarized by `Variant_Classification`.
@@ -142,78 +184,233 @@ mafbarplot(maf =  laml_tum)
 
 Here are the mutation distributions for the other subsets.
 
-As a sanity check, there are few TP53 mutations in the top 10 for the non-Serous samples, which makes sense.
+As a sanity check, the majority of Serous samples have TP53 mutations, while there are few TP53 mutations in the top 10 for the non-Serous samples (as is expected).
 
-:::{.callout-note collapse="true"}
-
+::: {.callout-note collapse="true"}
 ### See the other subsets
 
 #### By Histology
+
 ##### Serous
+
 ```{r}
 ## Serous 
 plotmafSummary(maf = laml_ser, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
 ```
+
 ```{r}
 mafbarplot(maf =  laml_ser)
 ```
 
 ##### Non-Serous
+
 ```{r}
 ## Non-serous
 plotmafSummary(maf = laml_other, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
 ```
+
 ```{r}
 mafbarplot(maf =  laml_other)
 ```
 
-
 #### By Response
+
 ##### CB
+
 ```{r}
 ## CB
 plotmafSummary(maf = laml_CB, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
 ```
+
 ```{r}
 mafbarplot(maf =  laml_CB)
 ```
 
 ##### NCB
+
 ```{r}
 ## NCB
 plotmafSummary(maf = laml_NCB, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
 ```
+
 ```{r}
 mafbarplot(maf =  laml_NCB)
 ```
 
 #### By Treatment
+
 ##### Nivo
+
 ```{r}
 ## Nivo
 plotmafSummary(maf = laml_nivo, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
 ```
+
 ```{r}
 mafbarplot(maf =  laml_nivo)
 ```
+
 ##### Combo
+
 ```{r}
 ## Combo
 plotmafSummary(maf = laml_combo, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
 ```
+
 ```{r}
 mafbarplot(maf =  laml_combo)
 ```
-
 :::
 
-# Oncoplots
+# Oncoprints
 
-```{r}
+Oncoprints (or "oncoplots" as the wrapper function in `maftools` is called) summarize complex genomic features of a given dataset.
+
+```{r fig.width=9}
 #oncoplot for top ten mutated genes.
 oncoplot(maf = laml_tum, top = 10)
+```
 
+These are the key features and how they are interpreted:
+
+-   Columns represent individual patients.
+    -   Reading column-wise, you can see the collection of alterations in a patient's tumor for the given set of genes.
+    -   The bar plot on the top is a count of tumor mutation burden per patient, color-coded by mutation type.
+-   Rows are altered genes.
+    -   Alterations are color-coded to indicate their type (e.g. mutation, deletion, insertion)
+    -   Genes can be further annotated with key features (e.g. high impact/likely pathogenic mutations, germline variants, etc.)
+-   The bar plot on the right summarizes alterations in a given gene for the entire dataset.
+-   Many more features and annotations can be added to further characterize the dataset.
+
+```{r fig.width=9}
 # Highlight by specific attribute in MAF file
 oncoplot(maf = laml_tum, 
+         additionalFeature = c("IMPACT", "HIGH"))
+
+# Add transitions/transversions  
+oncoplot(maf = laml_tum, draw_titv = TRUE)
+
+# cBioPortal alteration nomenclature 
+oncoplot(maf = laml_tum, cBioPortal = TRUE)
+```
+
+## Oncoprints by clinical data
+
+```{r}
+#| fig.width: 9
+
+##Primary vs metastatic sites
+oncoplot(maf = laml_tum, clinicalFeatures = 'Primary_Met', sortByAnnotation = TRUE)
+## Cell type
+oncoplot(maf = laml_tum, clinicalFeatures = 'celltype', sortByAnnotation = TRUE)
+## ICI response
+oncoplot(maf = laml_tum, clinicalFeatures = c('responseCB','response2'), sortByAnnotation = TRUE)
+## ICI response and treatment
+oncoplot(maf = laml_tum, clinicalFeatures = 'response_tx', sortByAnnotation = TRUE)
+## Mutational signature
+oncoplot(maf = laml_tum, clinicalFeatures = 'Signature', sortByAnnotation = TRUE)
+## Race
+oncoplot(maf = laml_tum, clinicalFeatures = 'race', sortByAnnotation = TRUE)
+## Site
+oncoplot(maf = laml_tum, clinicalFeatures = c('Site2','Site'), sortByAnnotation = TRUE)
+
+```
+
+### Oncogenic signalling pathways
+
+```{r}
+# Plot genes in top oncogenic signalling pathways
+oncoplot(maf = laml_tum, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 2)
+# Collapse pathways
+# oncoplot(maf = laml_tum, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 5, collapsePathway = TRUE)
+# oncoplot(maf = laml_tum, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 8, collapsePathway = TRUE, 
+#          clinicalFeatures = 'Signature', sortByAnnotation = TRUE)
+# oncoplot(maf = laml_tum, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 5, collapsePathway = TRUE, 
+#          clinicalFeatures = 'responseCB', sortByAnnotation = TRUE)
+# oncoplot(maf = laml_tum, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 5, collapsePathway = TRUE, 
+#          clinicalFeatures = c("responseCB","tx"), sortByAnnotation = TRUE)
+# # Serous and other
+# oncoplot(maf = laml_ser, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 5, collapsePathway = TRUE)
+# oncoplot(maf = laml_other, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPathways = 5, collapsePathway = TRUE,
+#          clinicalFeatures = 'celltype')
+
+```
+
+```{r}
+# Biological processes of known drivers
+oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.8, topPathways = 2, 
          additionalFeature = c("vcf_id", "GERMLINE_PATHOGENIC"))
+# oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.8, topPathways = 2,
+#          clinicalFeatures = 'responseCB', sortByAnnotation = TRUE, 
+#          additionalFeature = c("vcf_id", "GERMLINE_PATHOGENIC"))
+# 
+# oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.8, topPathways = 2,
+#          clinicalFeatures = c('response2'), sortByAnnotation = TRUE, 
+#          additionalFeature = c("vcf_id", "GERMLINE_PATHOGENIC"))
+# 
+# oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 5, collapsePathway = TRUE)
+# oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 5, collapsePathway = TRUE,
+#          clinicalFeatures = 'Signature', sortByAnnotation = TRUE)
+# oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 10, collapsePathway = TRUE)
+# oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 10, collapsePathway = TRUE,
+#          clinicalFeatures = 'Signature', sortByAnnotation = TRUE)
+# oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 10, collapsePathway = TRUE,
+#          clinicalFeatures = 'responseCB', sortByAnnotation = TRUE)
+# oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 10, collapsePathway = TRUE,
+#          clinicalFeatures = 'response2', sortByAnnotation = TRUE)
+# oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 10, collapsePathway = TRUE,
+#          clinicalFeatures = 'celltype', sortByAnnotation = TRUE)
+# 
+# oncoplot(maf = laml_ser, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 10, collapsePathway = TRUE)
+# oncoplot(maf = laml_other, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 10, collapsePathway = TRUE,
+#          clinicalFeatures = 'celltype')
+
+```
+
+```{r}
+# ## Color coding
+# ghibli_colors <- ghibli_palette("PonyoMedium", type = "discrete")
+# ghibli_colors
+# respcolors <- c("#278B9AFF","#E75B64FF")
+# names(respcolors) = c("CB","NCB")
+# fabcolors = RColorBrewer::brewer.pal(n = 5,name = 'Spectral')
+# names(fabcolors) = c("CR", "PR", "SD_CB", "SD_NCB", "PD")
+# txcolors = c("#BEAED4","#7FC97F")
+# names(txcolors) = c("Nivo","Combo")
+# cellcolors = RColorBrewer::brewer.pal(n = 6,name = 'PRGn')
+# names(cellcolors) = c("Serous_Adenocarcinoma","Endometrioid_Adenocarcinoma","Adenocarcinoma",
+#                       "Clear_Cell","Mixed_Epithelial","Undifferentiated_Carcinoma")
+# 
+# sample_order = read.csv("sampleorder.csv",header=F)
+# sample_order <- as.matrix(sample_order)
+# 
+#   #For continuous numrical annotations, use one of the below palettes 
+# # c("Blues", "BuGn", "BuPu", "GnBu", "Greens", "Greys", "Oranges", "OrRd", "PuBu", "PuBuGn", "PuRd", "Purples", "RdPu", "Reds","YlGn", "YlGnBu", "YlOrBr", "YlOrRd")
+# 
+# anno_cols = list(tx = txcolors, response2 = fabcolors, Survtime = "Blues", celltype = cellcolors)
+# 
+# print(anno_cols)
+# 
+# oncoplot(
+#   maf = laml_tum, 
+#   clinicalFeatures = c('response2','tx',  'Survtime','celltype'),
+#   sortByAnnotation = TRUE,
+#   annotationColor = anno_cols
+# )
+# 
+# ## For AACR Poster
+# # Genome integrity pathway, response, cell type, survival time
+# anno_cols2 = list(tx = txcolors, responseCB = respcolors, Survtime = "Blues", celltype = cellcolors)
+# 
+# print(anno_cols2)
+# 
+# oncoplot(
+#   maf = laml_tum, 
+#   clinicalFeatures = c('responseCB','tx','Survtime','celltype'),
+#   sortByAnnotation = TRUE,
+#   annotationColor = anno_cols2,
+#   drawColBar = FALSE,
+#   pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 1, 
+#   additionalFeature = c("IMPACT", "HIGH")
+#)
 ```

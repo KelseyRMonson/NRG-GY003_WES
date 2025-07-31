@@ -176,7 +176,7 @@ laml_tum = subsetMaf(maf = laml_tum, query = "vcf_id %in% c('SOMATIC','GERMLINE_
 
 We can also subset by tumor histology, treatment, and response.
 
-::: {.callout-note collapse="true" appearance="simple"}
+::: {.callout-note appearance="simple" collapse="true"}
 #### See other subsets
 
 ```{r}
@@ -243,7 +243,7 @@ Here are the mutation distributions for the other subsets.
 
 As a sanity check, the majority of Serous samples have TP53 mutations, while there are few TP53 mutations in the top 10 for the non-Serous samples (as is expected).
 
-::: {.callout-note collapse="true"}
+::: {.callout-note appearance="simple" collapse="true"}
 ### See the other subsets
 
 #### By Histology
@@ -401,7 +401,7 @@ oncoplot(maf = laml_tum, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPa
          collapsePathway = TRUE)
 ```
 
-### Pathways by Response
+**Pathways by Response**
 
 ```{r}
 #| fig.width: 9
@@ -418,7 +418,7 @@ oncoplot(maf = laml_tum, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPa
          clinicalFeatures = 'response_tx', sortByAnnotation = TRUE)
 ```
 
-### Pathways by Histology
+**Pathways by Histology**
 
 Since these are the top pathways for the whole cohort, they may be masking histologically-specific pathways.
 
@@ -455,7 +455,7 @@ oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.8, topPa
 
 ```
 
-### Pathways by Response & Histology
+**Pathways by Response & Histology**
 
 ```{r}
 #| fig.width: 9
@@ -484,9 +484,7 @@ oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.8, topPa
 
 ```
 
-### Pathways by mutational signature\*
-
-\*Will need to return to this, but it seems like sig1 is more BRCA1 while sig2 is more BRCA2.
+**Pathways by mutational signature**\*
 
 ```{r}
 #| fig.width: 9
@@ -498,7 +496,15 @@ oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.8, topPa
          additionalFeature = c("vcf_id", "GERMLINE_PATHOGENIC"))
 ```
 
-### Top pathways
+::: callout-caution
+### Note to Kelsey #1
+
+\*Will need to return to this, but it seems like sig1 is more BRCA1 while sig2 is more BRCA2.
+
+I need to re-call the mutational signatures (downstream of these analyses in my original script) and update this section.
+:::
+
+**Top pathways**
 
 Now collapsing the plots to show only the pathways
 
@@ -532,7 +538,7 @@ oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPa
 
 ```
 
-### Top pathways by histology
+**Top pathways by histology**
 
 As with the oncogenic signaling pathways, I am plotting these separately for serous and non-serous.
 
@@ -712,6 +718,14 @@ lollipopPlot(
 )
 ```
 
+::: callout-caution
+### Note to Kelsey #2
+
+I need to better understand what specifically is being plotted here; does this mean that all the mutations are found in introns and not actually protein-coding regions?
+
+These regions don't seem to map exactly to the exons when I look at ARID1A in UCSC Genome Browser.
+:::
+
 ## Rainfall plots
 
 Rainfall plots illustrate "hypermutated" genomic regions.
@@ -753,4 +767,19 @@ rainfallPlot(
    tsb = "GADGAE",
   ref.build = "hg38"
  )
+```
+
+## Compare TMB to TCGA
+
+```{r}
+## Capture size for Twist Bioscience Human Comprehensive Exome kit (used for WES) is 36.8Mb
+laml.mutload = tcgaCompare(maf = laml_tum, cohortName = 'NRG-GY003', logscale = TRUE, capture_size = 36.8)
+laml.mutload = tcgaCompare(maf = laml_tum, cohortName = 'NRG-GY003', logscale = TRUE)
+# This seems...unlikely??
+
+# Just in serous
+laml.mutload = tcgaCompare(maf = laml_ser, cohortName = 'NRG-GY003', logscale = TRUE, capture_size = 36.8)
+# Other
+laml.mutload = tcgaCompare(maf = laml_other, cohortName = 'NRG-GY003', logscale = TRUE, capture_size = 36.8)
+
 ```

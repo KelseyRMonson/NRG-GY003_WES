@@ -111,15 +111,17 @@ library("BSgenome.Hsapiens.UCSC.hg38", quietly = TRUE)
 library(NMF) # For signature calculation
 library(pheatmap) # For nice heatmaps
 library(ghibli) # For pretty colors
+library(gt) # For nice tables (maybe?)
 ```
 
 Load in raw MAF file and the clinical data
 
 ```{r}
-laml = read.maf(maf="input/merged_consensus_all_samples_germline.maf", 
+laml = read.maf(maf="input/merged_consensus_all_samples_germline.maf",
                 clinicalData ="input/NRG-GY00_laml_annot_2.csv",
                 rmFlags = TRUE # "FLAGS, frequently mutated genes in public exomes"
                 )
+
 ```
 
 ::: callout-tip
@@ -340,24 +342,37 @@ These are the key features and how they are interpreted:
 -   The bar plot on the right summarizes alterations in a given gene for the entire dataset.
 -   Many more features and annotations can be added to further characterize the dataset.
 
-```{r fig.width=9}
-# Highlight by specific attribute in MAF file
-oncoplot(maf = laml_tum, 
-         additionalFeature = c("IMPACT", "HIGH"))
-
-# Add transitions/transversions  
-oncoplot(maf = laml_tum, draw_titv = TRUE)
-
-# cBioPortal alteration nomenclature 
-oncoplot(maf = laml_tum, cBioPortal = TRUE)
-```
-
 :::{.callout-caution}
 
 ### #*KelseyNote*#
 
-Something to be aware of, especially as there are a number of mucins that are coming up, is that some samples were tumor-only and some were matched normal; would be good to annotate the metadata with this info and see if the mucins are coming up more in the tumor-only samples, since these genes tend to be highly polymorphic. 
+Something to be aware of, especially as there are a number of mucins that are coming up, is that some samples were tumor-only and some were matched normal; would be good to annotate the metadata with this info and see if the mucins are coming up more in the tumor-only samples, since these genes tend to be highly polymorphic.
+
+Also re: mucins, MUC16 is one of the genes that's filtered out when using the FLAGS filter (it's #2 on the list of top mutated genes). If we include it, it's the 13th most mutated gene, but there are only 9 patients who have mutations. 
+
+**Questions**
+
+1. Do we care about MUC16 mutations?
+
+*Chatted with Yanis about this, we might be interested in this, at least in relation to his project for where the mutations are coming from (if they're all in the cleaved region, we don't care so much, but if they're in the membrane-bound region, this could be a problem). He will see where his antibody binds, and I will work on making a lollipop plot in our data. Based on cBioPortal, all the [ovarian cancer mutations](https://www.cbioportal.org/results/mutations?cancer_study_list=hgsoc_msk_2021%2Chgsoc_tcga_gdc%2Clgsoc_mapk_msk_2022%2Covary_cptac_gdc%2Covary_geomx_gray_foundation_2024%2Cmsk_spectrum_tme_2022%2Cov_tcga%2Cov_tcga_pub%2Cov_tcga_pan_can_atlas_2018%2Covarian_msk_2025%2Cscco_mskcc&Z_SCORE_THRESHOLD=2.0&RPPA_SCORE_THRESHOLD=2.0&profileFilter=mutations%2Cstructural_variants%2Ccna%2Cgistic&case_set_id=all&gene_list=MUC16&geneset_list=%20&tab_index=tab_visualize&Action=Submit) are in the extracellular region, not the transmembrane or cytoplasmic regions (which is good).*
+
+2. Should we be excluding the other mucins from the analysis? (And does it matter beyond individual gene-level analysis? It could affect multiple testing adjustments.)
+
 :::
+
+
+```{r fig.width=9}
+# Highlight by specific attribute in MAF file
+oncoplot(maf = laml_tum, top = 10,
+         additionalFeature = c("IMPACT", "HIGH"))
+
+# Add transitions/transversions  
+oncoplot(maf = laml_tum, top = 10, draw_titv = TRUE)
+
+# cBioPortal alteration nomenclature 
+oncoplot(maf = laml_tum, top = 10, cBioPortal = TRUE)
+```
+
 
 ## Oncoprints by clinical data
 
@@ -633,6 +648,7 @@ The `titiv` function summarizes these for the dataset:
 #| warning: false
 
 laml.titv = titv(maf = laml_tum, plot = FALSE, useSyn = TRUE)
+
 #plot titv summary
 plotTiTv(res = laml.titv, plotNotch = TRUE)
 ```
@@ -729,9 +745,9 @@ lollipopPlot(
 ::: callout-caution
 ### #*KelseyNote*#
 
-I need to better understand what specifically is being plotted here; does this mean that all the mutations are found in introns and not actually protein-coding regions?
+I need to better understand what specifically is being plotted here; based on cBioPortal, and because this is the *protein* that's being shown, it's only the exons, but I need to better understand these functional regions that are being highlighted. 
 
-These regions don't seem to map exactly to the exons when I look at ARID1A in UCSC Genome Browser.
+The x-axis here is amino acids, not base pairs. 
 :::
 
 ## Rainfall plots
@@ -843,3 +859,18 @@ I'm not sure how meaningful this analysis is.
 Something to be cautious of, especially in the CB/NCB analysis, is that the cohort is enriched for Serous histology but that may not be evenly distributed between CB/NCB groups (should test this), so we could be picking up on histological differences that we mistake for real response signals. 
 :::
 
+## Pfam domains
+```{r}
+#| fig.width: 9
+#| warning: false
+
+laml.pfam = pfamDomains(maf = laml_tum, top = 10)
+proteinhead <- head(laml.pfam$proteinSummary)
+gt(proteinhead)
+
+domainhead <- head(laml.pfam$domainSummary)
+gt(domainhead)
+
+laml.pfam.ser = pfamDomains(maf = laml_ser, top = 10)
+laml.pfam.other = pfamDomains(maf = laml_other, top = 10)
+```

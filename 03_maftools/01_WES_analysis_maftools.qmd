@@ -1,7 +1,7 @@
 ---
 title: "NRG-GY003 WES Analysis"
 subtitle: "Whole Exome genomic analysis of NRG-GY003 ovarian cancer tumors"
-description: "Test"
+description: "Genomic analysis of tumor exomes from patients with recurrent ovarian cancer treated with immune checkpoint inhibitors (NIVO or IPI/NIVO) treated on the NRG-GY003 clinical trial."
 
 author:
   - name: Kelsey Monson
@@ -23,7 +23,7 @@ affiliations:
 title-block-banner: "#f0f3f5"
 title-block-banner-color: "black"
 
-keywords: "R, Data Analysis, Data Viz"
+keywords: "Genomics, Whole Exome, Immunotherapy, R, Ovarian Cancer"
 date: today
 
 format: 
@@ -222,7 +222,7 @@ laml_tum
 
 ```
 
-# Visualization
+# Visual Summaries
 
 ## Summarize the maf file
 
@@ -248,8 +248,7 @@ As a sanity check, the majority of Serous samples have TP53 mutations, while the
 
 #### By Histology
 
-##### Serous
-
+Serous
 ```{r}
 ## Serous 
 plotmafSummary(maf = laml_ser, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
@@ -259,8 +258,7 @@ plotmafSummary(maf = laml_ser, rmOutlier = TRUE, addStat = 'median', dashboard =
 mafbarplot(maf =  laml_ser)
 ```
 
-##### Non-Serous
-
+Non-Serous
 ```{r}
 ## Non-serous
 plotmafSummary(maf = laml_other, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
@@ -272,8 +270,7 @@ mafbarplot(maf =  laml_other)
 
 #### By Response
 
-##### CB
-
+CB
 ```{r}
 ## CB
 plotmafSummary(maf = laml_CB, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
@@ -283,8 +280,7 @@ plotmafSummary(maf = laml_CB, rmOutlier = TRUE, addStat = 'median', dashboard = 
 mafbarplot(maf =  laml_CB)
 ```
 
-##### NCB
-
+NCB
 ```{r}
 ## NCB
 plotmafSummary(maf = laml_NCB, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
@@ -296,8 +292,7 @@ mafbarplot(maf =  laml_NCB)
 
 #### By Treatment
 
-##### Nivo
-
+Nivo
 ```{r}
 ## Nivo
 plotmafSummary(maf = laml_nivo, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
@@ -307,8 +302,7 @@ plotmafSummary(maf = laml_nivo, rmOutlier = TRUE, addStat = 'median', dashboard 
 mafbarplot(maf =  laml_nivo)
 ```
 
-##### Combo
-
+Combo
 ```{r}
 ## Combo
 plotmafSummary(maf = laml_combo, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
@@ -370,6 +364,12 @@ oncoplot(maf = laml_tum, clinicalFeatures = 'Signature', sortByAnnotation = TRUE
 oncoplot(maf = laml_tum, clinicalFeatures = 'race', sortByAnnotation = TRUE)
 ## Site
 oncoplot(maf = laml_tum, clinicalFeatures = c('Site2','Site'), sortByAnnotation = TRUE)
+
+## Stratified by histology
+## Serous
+oncoplot(maf = laml_ser, clinicalFeatures = c('Site2','Site','celltype'), sortByAnnotation = TRUE)
+## Non-Serous
+oncoplot(maf = laml_other, clinicalFeatures = c('Site2','Site','celltype'), sortByAnnotation = TRUE)
 
 ```
 
@@ -587,8 +587,114 @@ oncoplot(
   maf = laml_tum,
   clinicalFeatures = c('responseCB','tx','Survtime','celltype'),
   sortByAnnotation = TRUE,
+  draw_titv = TRUE,
   annotationColor = anno_cols2,
   pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 2,
   additionalFeature = c("vcf_id", "GERMLINE_PATHOGENIC")
+)
+```
+
+# Other Visualizations
+
+## Transitions and transversions
+**Transitions** are changes between two purines (A <-> G) or two pyrimidines (C <-> T), involving bases of simliar shapes. 
+
+**Transversions** are changes from a purine to a pyrimidine or vice versa, resulting in the exchange of one-ring and two-ring structures. 
+
+Here's a nice picture from [this](https://www.mun.ca/biology/scarr/Transitions_vs_Transversions.html#:~:text=Transitions%20are%20interchanges%20of%20two,ring%20&%20two%2Dring%20structures.) page:
+![](https://www.mun.ca/biology/scarr/Transitions_&_Transversions.gif)
+
+**Transitions** tend to be more common than **transversions**, despite there being twice as many *possible* transversions. 
+
+The `titiv` function summarizes these for the dataset:
+```{r}
+#| fig.width: 9
+#| warning: false
+
+laml.titv = titv(maf = laml_tum, plot = FALSE, useSyn = TRUE)
+#plot titv summary
+plotTiTv(res = laml.titv, plotNotch = TRUE)
+```
+
+Here are the plots separated by histology:
+```{r}
+
+# Serous
+laml.titv.ser = titv(maf = laml_ser, plot = FALSE, useSyn = TRUE)
+plotTiTv(res = laml.titv.ser, plotNotch = TRUE)
+
+# Non-Serous
+laml.titv.other = titv(maf = laml_other, plot = FALSE, useSyn = TRUE)
+plotTiTv(res = laml.titv.other)
+```
+
+## Lollipop plots
+Draws a lollipop plot of amino acid changes on a protein structure (protein domains are derived from the [PFAM database](http://pfam.xfam.org/)).
+
+Let's look at the plot for `TP53` (the most mutated gene in overall ovarian cohort)
+```{r}
+#| fig.width: 9
+#| warning: false
+
+# Lollipop plot for TP53
+lollipopPlot(
+  maf = laml_tum,
+  gene = 'TP53',
+  showMutationRate = TRUE
+)
+```
+
+However, we know it's the most commonly mutated gene because the majority of the samples are Serous. 
+
+This is what it looks like stratified by histology:
+```{r}
+#| fig.width: 9
+#| warning: false
+
+# Serous
+lollipopPlot(
+  maf = laml_ser,
+  gene = 'TP53',
+  showMutationRate = TRUE
+)
+
+# Non-Serous
+lollipopPlot(
+  maf = laml_other,
+  gene = 'TP53',
+  showMutationRate = TRUE
+)
+```
+
+What about `ARID1A`? Here is the full cohort:
+```{r}
+#| fig.width: 9
+#| warning: false
+
+# Lollipop plot for ARID1A
+lollipopPlot(
+  maf = laml_tum,
+  gene = 'ARID1A',
+  showMutationRate = TRUE
+)
+```
+
+And stratified by histology:
+```{r}
+#| fig.width: 9
+#| warning: false
+
+# Serous
+lollipopPlot(
+  maf = laml_ser,
+  gene = 'ARID1A',
+  showMutationRate = TRUE
+)
+
+# Non-Serous
+lollipopPlot(
+  maf = laml_other,
+  gene = 'ARID1A',
+  showMutationRate = TRUE
 )
 ```

@@ -40,8 +40,68 @@ editor: visual
 
 # Intro
 
+## Variant Filtering Strategy
+
+I first used the [Nextflow Sarek](https://nf-co.re/sarek/3.4.0/) pipeline to align the raw fastq files. Below is the workflow I used:
+
+![*Note that, at this time, I have only merged the variants from the SNP/indel callers, as ASCAT and the other SV/CNV callers do not have .vcfs as their output.*](input/Sarek_pipeline.png)
+
+Here is the detailed variant filtering strategy I used to come up with the MAF file used in this analysis:
+
+-   First find consensus somatic calls:
+
+    -   Present in \>=2 somatic callers (`Freebayes`, `Mutect2`, `Strelka2`)
+    -   Include variants annotated with **PASS**
+        -   **PASS**: indicates the variant passed all quality filters applied by the variant caller
+
+        -   Considered the gold-standard for high-quality variants passing the variant caller's built-in quality control filters
+    -   Further refine **PASS** variants
+        -   Minimum tumor **Read Depth = 20**: ensures sufficient coverage (i.e. evidence) to confidently call tumor variants from normal and/or distinguish from random sequencing errors
+
+        -   Allele frequency **0.05 \< AF \< 0.95**:
+
+            -   \>0.05: also helps avoid random sequencing errors/miss-called variants
+
+            -   \<0.95: helps avoid germline contamination
+
+-   Identify rare pathogenic germline variants:
+
+    -   Present in \>=2 germline callers (`Freebayes`, `Haplotypecaller`, `Strelka2`)
+
+    -   Identify those most likely to be pathogenic
+
+        -   Limit to **protein-coding variants** (drop all intergenic and non-coding variants)
+
+        -   Must be annotated with **HIGH** impact
+
+    -   Eliminate common variants
+
+        -   "Rare" variants are typically those present in \<1% of the population
+
+        -   Because I was worried about missing variants, I initially excluded those with \>5% population frequency, but this was too liberal.
+
+        -   I revised the script to set the threshold to 1% and will re-generate the MAF file eventually
+
+        -   For the current analysis, I QC'd the variants and only identified likey oncogenic variants in BRCA1/2, so limited the germline analysis to those genes.
+
+    -   Include all likely oncogenes regardless of population frequency ("BRCA1" "BRCA2" "TP53" "PTEN" "ATM" "CHEK2" "PALB2" "APC" "MUTYH")
+
+-   Generated consensus MAF file
+
+    -   The above analysis generated two vcfs, one with the processed somatic variants and one with likely pathogenic germline variants
+
+    -   These variants were annotated as SOMATIC or GERMLINE_PATHOGENIC, respectively in the vcfs
+
+    -   I then concatenated these variants to one MAF file for the entire sample using the [Nextflow vcf2maf](https://nf-co.re/modules/vcf2maf) pipeline.
+
+This consensus MAF is what is used for the downstream analysis presented here.
+
+## Loading in the data
+
 ```{r}
 #| warning: false
+#| code-fold: true
+#| code-summary: "Packages Used"
 
 # Load packages
 
@@ -52,8 +112,6 @@ library(NMF) # For signature calculation
 library(pheatmap) # For nice heatmaps
 library(ghibli) # For pretty colors
 ```
-
-## Loading in the data
 
 Load in raw MAF file and the clinical data
 
@@ -72,7 +130,7 @@ Details on these genes can be found [here](https://bmcmedgenomics.biomedcentral.
 
 ```{r}
 #| code-fold: true
-#| code-summary: "Setting levels for factor variables"
+#| code-summary: "Data cleaning: setting levels for factor variables"
 
 # RECIST response (CR, PR, SD, PD)
 laml@clinical.data$response <- factor(laml@clinical.data$response, levels=c("CR","PR","SD","PD"))
@@ -298,7 +356,7 @@ oncoplot(maf = laml_tum, cBioPortal = TRUE)
 ```{r}
 #| fig.width: 9
 
-##Primary vs metastatic sites
+## Primary vs metastatic sites
 oncoplot(maf = laml_tum, clinicalFeatures = 'Primary_Met', sortByAnnotation = TRUE)
 ## Cell type
 oncoplot(maf = laml_tum, clinicalFeatures = 'celltype', sortByAnnotation = TRUE)
@@ -316,6 +374,7 @@ oncoplot(maf = laml_tum, clinicalFeatures = c('Site2','Site'), sortByAnnotation 
 ```
 
 ## Oncogenic signaling pathways
+
 `sigpw` plots enrichment for known oncogenic signaling pathways as defined in TCGA, [Sanchez/Vega et al](https://pubmed.ncbi.nlm.nih.gov/29625050/).
 
 ```{r}
@@ -354,9 +413,11 @@ oncoplot(maf = laml_tum, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, topPa
 ```
 
 ### Pathways by Histology
-Since these are the top pathways for the whole cohort, they may be masking histologically-specific pathways. 
 
-This is where it is useful to subset the data. Here I am plotting the top pathways for serous and all non-serous patients separately. 
+Since these are the top pathways for the whole cohort, they may be masking histologically-specific pathways.
+
+This is where it is useful to subset the data. Here I am plotting the top pathways for serous and all non-serous patients separately.
+
 ```{r}
 #| fig.width: 9
 #| warning: false
@@ -372,9 +433,11 @@ oncoplot(maf = laml_other, pathways = "sigpw", gene_mar = 8, fontSize = 0.6, top
 ```
 
 ## Biological processes of known tumor drivers
+
 `smgbp` plots enrichment for pan-cancer significantly mutated genes, classified by biological processes, per [Bailey et al](https://pubmed.ncbi.nlm.nih.gov/29625053/).
 
 Here are the top 2 biological processes of known drivers
+
 ```{r}
 #| fig.width: 9
 #| fig.height: 8
@@ -387,6 +450,7 @@ oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.8, topPa
 ```
 
 ### Pathways by Response & Histology
+
 ```{r}
 #| fig.width: 9
 #| fig.height: 8
@@ -414,8 +478,10 @@ oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.8, topPa
 
 ```
 
-### Pathways by mutational signature*
-*Will need to return to this, but it seems like sig1 is more BRCA1 while sig2 is more BRCA2.
+### Pathways by mutational signature\*
+
+\*Will need to return to this, but it seems like sig1 is more BRCA1 while sig2 is more BRCA2.
+
 ```{r}
 #| fig.width: 9
 #| fig.height: 8
@@ -428,7 +494,8 @@ oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.8, topPa
 
 ### Top pathways
 
-Now plotting the pathways
+Now collapsing the plots to show only the pathways
+
 ```{r}
 #| fig.width: 9
 #| warning: false
@@ -438,7 +505,7 @@ oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPa
          collapsePathway = TRUE)
 
 # Top 10 pathways*
-# *I've set `topPathways` = 10 but this is like 24 pathways, not sure what's going on there...
+# *I've set `topPathways` = 10 but this is 24 pathways, not sure what's going on there...
 oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPathways = 10, 
          collapsePathway = TRUE)
 
@@ -460,7 +527,9 @@ oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, topPa
 ```
 
 ### Top pathways by histology
+
 As with the oncogenic signaling pathways, I am plotting these separately for serous and non-serous.
+
 ```{r}
 #| fig.width: 9
 #| warning: false
@@ -476,7 +545,7 @@ oncoplot(maf = laml_other, pathways = "smgbp", gene_mar = 8, fontSize = 0.6, top
          clinicalFeatures = 'celltype')
 ```
 
-## A few more complete annotations
+## Additional oncoprints with more complex annotations
 
 ```{r}
 #| warning: false
@@ -497,6 +566,8 @@ names(cellcolors) = c("Serous_Adenocarcinoma","Endometrioid_Adenocarcinoma","Ade
 
 
 anno_cols = list(tx = txcolors, response2 = fabcolors, Survtime = "Blues", celltype = cellcolors)
+anno_cols2 = list(tx = txcolors, responseCB = respcolors, Survtime = "Blues", celltype = cellcolors)
+#print(anno_cols2)
 
 ```
 
@@ -511,9 +582,6 @@ oncoplot(
   sortByAnnotation = TRUE,
   annotationColor = anno_cols
 )
-
-anno_cols2 = list(tx = txcolors, responseCB = respcolors, Survtime = "Blues", celltype = cellcolors)
-#print(anno_cols2)
 
 oncoplot(
   maf = laml_tum,

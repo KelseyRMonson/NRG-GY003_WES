@@ -128,6 +128,7 @@ Setting `rmFlags` = `TRUE` removes frequently mutated genes in public exomes
 Details on these genes can be found [here](https://bmcmedgenomics.biomedcentral.com/articles/10.1186/s12920-017-0309-7#MOESM1).
 :::
 
+
 ```{r}
 #| code-fold: true
 #| code-summary: "Data cleaning: setting levels for factor variables"
@@ -351,6 +352,13 @@ oncoplot(maf = laml_tum, draw_titv = TRUE)
 oncoplot(maf = laml_tum, cBioPortal = TRUE)
 ```
 
+:::{.callout-caution}
+
+### #*KelseyNote*#
+
+Something to be aware of, especially as there are a number of mucins that are coming up, is that some samples were tumor-only and some were matched normal; would be good to annotate the metadata with this info and see if the mucins are coming up more in the tumor-only samples, since these genes tend to be highly polymorphic. 
+:::
+
 ## Oncoprints by clinical data
 
 ```{r}
@@ -497,7 +505,7 @@ oncoplot(maf = laml_tum, pathways = "smgbp", gene_mar = 8, fontSize = 0.8, topPa
 ```
 
 ::: callout-caution
-### Note to Kelsey #1
+### #*KelseyNote*#
 
 \*Will need to return to this, but it seems like sig1 is more BRCA1 while sig2 is more BRCA2.
 
@@ -719,7 +727,7 @@ lollipopPlot(
 ```
 
 ::: callout-caution
-### Note to Kelsey #2
+### #*KelseyNote*#
 
 I need to better understand what specifically is being plotted here; does this mean that all the mutations are found in introns and not actually protein-coding regions?
 
@@ -769,13 +777,23 @@ rainfallPlot(
  )
 ```
 
+:::{.callout-caution}
+
+### #*KelseyNote*#
+I need to think of a good way to evaluate these for all samples; maybe just a script for only this for each sample and then summarize? 
+
+Think about this...
+:::
+
 ## Compare TMB to TCGA
 
 ```{r}
+#| fig.width: 9
+#| warning: false
+
 ## Capture size for Twist Bioscience Human Comprehensive Exome kit (used for WES) is 36.8Mb
 laml.mutload = tcgaCompare(maf = laml_tum, cohortName = 'NRG-GY003', logscale = TRUE, capture_size = 36.8)
-laml.mutload = tcgaCompare(maf = laml_tum, cohortName = 'NRG-GY003', logscale = TRUE)
-# This seems...unlikely??
+
 
 # Just in serous
 laml.mutload = tcgaCompare(maf = laml_ser, cohortName = 'NRG-GY003', logscale = TRUE, capture_size = 36.8)
@@ -783,3 +801,45 @@ laml.mutload = tcgaCompare(maf = laml_ser, cohortName = 'NRG-GY003', logscale = 
 laml.mutload = tcgaCompare(maf = laml_other, cohortName = 'NRG-GY003', logscale = TRUE, capture_size = 36.8)
 
 ```
+
+:::{.callout-caution}
+
+### #*KelseyNote*# 
+
+This is much better than when I used the Genewiz analysis (where they likely used a common reference genome and called everything outside that a somatic mutation), but this still seems a bit high compared to the ovarian cohort. 
+
+I know most of the TCGA samples are primaries, but I guess most of these are too, so it should be fairly comparable. Need to consider how much of a problem this is (or isn't).
+:::
+
+# Analysis
+
+## Somatic interactions
+
+Mutually exclusive or co-occurring set of genes can be detected using the `somaticInteractions` function, which performs pair-wise Fisher’s Exact test to detect such significant pair of genes.
+
+```{r}
+# Exclusive/co-occurance event analysis on top 10 mutated genes
+## Full cohort
+somaticInteractions(maf = laml_tum, top = 25, pvalue = c(0.05, 0.1))
+
+## Serous only
+somaticInteractions(maf = laml_ser, top = 25, pvalue = c(0.05, 0.1))
+## Non-Serous
+somaticInteractions(maf = laml_other, top = 25, pvalue = c(0.05, 0.1))
+
+## CB
+somaticInteractions(maf = laml_CB, top = 25, pvalue = c(0.05, 0.1))
+## NCB
+somaticInteractions(maf = laml_NCB, top = 25, pvalue = c(0.05, 0.1))
+
+```
+
+:::{.callout-caution}
+
+### #*KelseyNote*#
+
+I'm not sure how meaningful this analysis is. 
+
+Something to be cautious of, especially in the CB/NCB analysis, is that the cohort is enriched for Serous histology but that may not be evenly distributed between CB/NCB groups (should test this), so we could be picking up on histological differences that we mistake for real response signals. 
+:::
+

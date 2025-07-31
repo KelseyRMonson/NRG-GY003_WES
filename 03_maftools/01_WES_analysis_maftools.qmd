@@ -249,6 +249,7 @@ As a sanity check, the majority of Serous samples have TP53 mutations, while the
 #### By Histology
 
 Serous
+
 ```{r}
 ## Serous 
 plotmafSummary(maf = laml_ser, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
@@ -259,6 +260,7 @@ mafbarplot(maf =  laml_ser)
 ```
 
 Non-Serous
+
 ```{r}
 ## Non-serous
 plotmafSummary(maf = laml_other, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
@@ -271,6 +273,7 @@ mafbarplot(maf =  laml_other)
 #### By Response
 
 CB
+
 ```{r}
 ## CB
 plotmafSummary(maf = laml_CB, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
@@ -281,6 +284,7 @@ mafbarplot(maf =  laml_CB)
 ```
 
 NCB
+
 ```{r}
 ## NCB
 plotmafSummary(maf = laml_NCB, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
@@ -293,6 +297,7 @@ mafbarplot(maf =  laml_NCB)
 #### By Treatment
 
 Nivo
+
 ```{r}
 ## Nivo
 plotmafSummary(maf = laml_nivo, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
@@ -303,6 +308,7 @@ mafbarplot(maf =  laml_nivo)
 ```
 
 Combo
+
 ```{r}
 ## Combo
 plotmafSummary(maf = laml_combo, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
@@ -597,16 +603,17 @@ oncoplot(
 # Other Visualizations
 
 ## Transitions and transversions
-**Transitions** are changes between two purines (A <-> G) or two pyrimidines (C <-> T), involving bases of simliar shapes. 
 
-**Transversions** are changes from a purine to a pyrimidine or vice versa, resulting in the exchange of one-ring and two-ring structures. 
+**Transitions** are changes between two purines (A \<-\> G) or two pyrimidines (C \<-\> T), involving bases of simliar shapes.
 
-Here's a nice picture from [this](https://www.mun.ca/biology/scarr/Transitions_vs_Transversions.html#:~:text=Transitions%20are%20interchanges%20of%20two,ring%20&%20two%2Dring%20structures.) page:
-![](https://www.mun.ca/biology/scarr/Transitions_&_Transversions.gif)
+**Transversions** are changes from a purine to a pyrimidine or vice versa, resulting in the exchange of one-ring and two-ring structures.
 
-**Transitions** tend to be more common than **transversions**, despite there being twice as many *possible* transversions. 
+Here's a nice picture from [this](https://www.mun.ca/biology/scarr/Transitions_vs_Transversions.html#:~:text=Transitions%20are%20interchanges%20of%20two,ring%20&%20two%2Dring%20structures.) page: ![](https://www.mun.ca/biology/scarr/Transitions_&_Transversions.gif)
+
+**Transitions** tend to be more common than **transversions**, despite there being twice as many *possible* transversions.
 
 The `titiv` function summarizes these for the dataset:
+
 ```{r}
 #| fig.width: 9
 #| warning: false
@@ -617,6 +624,7 @@ plotTiTv(res = laml.titv, plotNotch = TRUE)
 ```
 
 Here are the plots separated by histology:
+
 ```{r}
 
 # Serous
@@ -629,9 +637,11 @@ plotTiTv(res = laml.titv.other)
 ```
 
 ## Lollipop plots
+
 Draws a lollipop plot of amino acid changes on a protein structure (protein domains are derived from the [PFAM database](http://pfam.xfam.org/)).
 
 Let's look at the plot for `TP53` (the most mutated gene in overall ovarian cohort)
+
 ```{r}
 #| fig.width: 9
 #| warning: false
@@ -644,9 +654,10 @@ lollipopPlot(
 )
 ```
 
-However, we know it's the most commonly mutated gene because the majority of the samples are Serous. 
+However, we know it's the most commonly mutated gene because the majority of the samples are Serous.
 
 This is what it looks like stratified by histology:
+
 ```{r}
 #| fig.width: 9
 #| warning: false
@@ -667,6 +678,7 @@ lollipopPlot(
 ```
 
 What about `ARID1A`? Here is the full cohort:
+
 ```{r}
 #| fig.width: 9
 #| warning: false
@@ -680,6 +692,7 @@ lollipopPlot(
 ```
 
 And stratified by histology:
+
 ```{r}
 #| fig.width: 9
 #| warning: false
@@ -697,4 +710,47 @@ lollipopPlot(
   gene = 'ARID1A',
   showMutationRate = TRUE
 )
+```
+
+## Rainfall plots
+
+Rainfall plots illustrate "hypermutated" genomic regions.
+
+Setting `detectChangePoints` = **TRUE** detects genomic change points where potential *kataegis* are found.
+
+*Kataegis* are genomic segments containing six or more consecutive mutations with an average inter-mutation distance of \<=1,000 bp.
+
+::: {.callout-tip collapse="true"}
+### More on *kataegis*
+
+From the `maftools` help page for `rainfallPlot()`:
+
+> Kategis detection algorithm by Moritz Goretzky at WWU Munster, which exploits the definition of Kategis (six consecutive mutations with an avg. distance of 1000 bp ) to identify hyper mutated genomic loci.
+>
+> -   Algorithm starts with a double-ended queue to which six consecutive mutations are added and their average inter-mutation distance is calculated.
+> -   If the average inter-mutation distance is larger than 1000, one element is added at the back of the queue and one is removed from the front.
+> -   If the average inter-mutation distance is less or equal to 1000, further mutations are added until the average inter-mutation distance is larger than 1000.
+> -   After that, all mutations in the double-ended queue are written into output as one kataegis and the double-ended queue is reinitialized with six mutations.
+:::
+
+By default, it plots the most mutated sample.
+
+```{r}
+#| fig.width: 9
+
+rainfallPlot(
+  maf = laml_tum, 
+  detectChangePoints = TRUE, 
+  pointSize = 0.4,
+  ref.build = "hg38"
+)
+
+# Here's a sample with kataegis
+rainfallPlot(
+  maf = laml_tum, 
+  detectChangePoints = TRUE, 
+  pointSize = 0.4,
+   tsb = "GADGAE",
+  ref.build = "hg38"
+ )
 ```

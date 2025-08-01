@@ -914,15 +914,28 @@ laml.pfam.NCB = pfamDomains(maf = laml_NCB, top = 10)
 # NCB Domains
 domainhead_NCB <- head(laml.pfam.NCB$domainSummary, n=10)
 gt(domainhead_NCB)
+
 ```
 
 :::{.callout-caution}
 
 #### #*KelseyNote*#
 
-The domains are largely similar between CB and NCB, but CB has WD40 in the top 4, but it's #20 for NCB. 
+The domains are largely similar between CB and NCB, but CB has `WD40` in the top 4, but it's #20 for NCB. 
 
-LamG is also only in CB top 10 (#13 for NCB), while S_TKc and Ig are in NCB top 10 (Ig is #19 for CB; S_TKc not in CB top 20).
+`LamG` is also only in CB top 10 (#13 for NCB), while `S_TKc` and `Ig` are in NCB top 10 (`Ig` is #19 for CB; `S_TKc` not in CB top 20).
 
 Again, not sure how meaningful this kind of analysis is.
 :::
+
+# Survival Analysis 
+```{r}
+#| fig.width: 9
+#| warning: false
+
+#Survival analysis based on grouping of TP53 mutation status
+mafSurvival(maf = laml_tum, genes = 'TP53', time = 'Survtime', Status = 'Survstat')
+
+# This...looks wrong. I don't think the events are being recognized correctly. 
+
+```

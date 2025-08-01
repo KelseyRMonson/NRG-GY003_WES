@@ -856,21 +856,73 @@ somaticInteractions(maf = laml_NCB, top = 25, pvalue = c(0.05, 0.1))
 
 I'm not sure how meaningful this analysis is. 
 
-Something to be cautious of, especially in the CB/NCB analysis, is that the cohort is enriched for Serous histology but that may not be evenly distributed between CB/NCB groups (should test this), so we could be picking up on histological differences that we mistake for real response signals. 
+Something to be cautious of, especially in the CB/NCB analysis, is that the cohort is enriched for Serous histology but that may not be evenly distributed between CB/NCB groups (should test this). 
+
+So we could be picking up on histological differences that we mistake for real response signals. 
 :::
 
 ## Pfam domains
+The `pfamDomains` function performs domain enrichment analysis, grouping protein domains to identify the most dysregulated pathways and protein families involved in similar functions.
+
+`pfamDomains` summarizes amino acid positions and annotates them with pfam domain info. 
+
+It returns two tables summarized by 1) amino acid positions and 2) domains. 
+
+It also plots the top most mutated domains as a scatter plot. 
 ```{r}
 #| fig.width: 9
 #| warning: false
 
+# Scatter plot with the top 10 mutated domains
 laml.pfam = pfamDomains(maf = laml_tum, top = 10)
+
+# Amino acid positions 
 proteinhead <- head(laml.pfam$proteinSummary)
 gt(proteinhead)
 
+# Domains
 domainhead <- head(laml.pfam$domainSummary)
 gt(domainhead)
 
+```
+
+Here are the results stratified by histology
+```{r}
+#| fig.width: 9
+#| warning: false
+
+# Serous
 laml.pfam.ser = pfamDomains(maf = laml_ser, top = 10)
+
+# Non-Serous
 laml.pfam.other = pfamDomains(maf = laml_other, top = 10)
 ```
+
+Here they are stratified by response
+```{r}
+#| fig.width: 9
+#| warning: false
+
+# CB
+laml.pfam.CB = pfamDomains(maf = laml_CB, top = 10)
+# CB Domains
+domainhead_CB <- head(laml.pfam.CB$domainSummary, n=10)
+gt(domainhead_CB)
+
+# NCB
+laml.pfam.NCB = pfamDomains(maf = laml_NCB, top = 10)
+# NCB Domains
+domainhead_NCB <- head(laml.pfam.NCB$domainSummary, n=10)
+gt(domainhead_NCB)
+```
+
+:::{.callout-caution}
+
+#### #*KelseyNote*#
+
+The domains are largely similar between CB and NCB, but CB has WD40 in the top 4, but it's #20 for NCB. 
+
+LamG is also only in CB top 10 (#13 for NCB), while S_TKc and Ig are in NCB top 10 (Ig is #19 for CB; S_TKc not in CB top 20).
+
+Again, not sure how meaningful this kind of analysis is.
+:::
